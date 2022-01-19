@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "label": "Hybrid Analysis",
     "description": "Hybrid Analysis provides malware analysis service",
-    "publisher": "",
+    "publisher": "Fortinet",
     "icon_small_name": "Hybrid_Analysis_small.png",
     "icon_large_name": "Hybrid_Analysis_medium.png",
     "category": "Sandbox",
