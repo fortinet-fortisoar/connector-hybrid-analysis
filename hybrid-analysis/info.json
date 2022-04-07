@@ -1,1137 +1,1201 @@
 {
-    "name": "hybrid-analysis",
-    "version": "2.0.0",
-    "label": "Hybrid Analysis",
-    "description": "Hybrid Analysis provides malware analysis service",
-    "publisher": "Fortinet",
-    "icon_small_name": "Hybrid_Analysis_small.png",
-    "icon_large_name": "Hybrid_Analysis_medium.png",
-    "category": "Sandbox",
-    "configuration": {
-        "fields": [
-            {
-                "title": "Server URL",
-                "required": true,
-                "editable": true,
-                "visible": true,
-                "type": "text",
-                "name": "server_url",
-                "value": "https://www.hybrid-analysis.com",
-                "description": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations."
-            },
-            {
-                "title": "API Key",
-                "required": true,
-                "editable": true,
-                "visible": true,
-                "type": "password",
-                "name": "api_key",
-                "description": "API key that is configured for your account to access the Hybrid Analysis endpoint."
-            },
-            {
-                "title": "Verify SSL",
-                "name": "verify_ssl",
-                "required": false,
-                "editable": true,
-                "visible": true,
-                "type": "checkbox",
-                "value": true,
-                "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True."
-            }
-        ]
-    },
-    "operations": [
+  "name": "hybrid-analysis",
+  "version": "2.0.0",
+  "label": "Hybrid Analysis",
+  "description": "Hybrid Analysis provides malware analysis service. This connector facilitates automated operations such as ",
+  "publisher": "Community",
+  "icon_small_name": "Hybrid_Analysis_small.png",
+  "icon_large_name": "Hybrid_Analysis_medium.png",
+  "category": "Malware Analysis",
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "text",
+        "name": "server_url",
+        "value": "https://www.hybrid-analysis.com",
+        "description": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations."
+      },
+      {
+        "title": "API Key",
+        "required": true,
+        "editable": true,
+        "visible": true,
+        "type": "password",
+        "name": "api_key",
+        "description": "API key that is configured for your account to access the Hybrid Analysis endpoint."
+      },
+      {
+        "title": "Verify SSL",
+        "name": "verify_ssl",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "type": "checkbox",
+        "value": true,
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.By default, this option is set as True."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "hashes_search",
+      "title": "Get Analysis Report for Multiple Hashcodes",
+      "category": "investigation",
+      "annotation": "hashes_search",
+      "description": "Get Analysis Report summary for multiple MD5/SHA1/SHA256 Hash codes",
+      "parameters": [
         {
-            "operation": "hashes_search",
-            "title": "Get Analysis Report for Multiple Hashcodes",
-            "category": "investigation",
-            "annotation": "hashes_search",
-            "description": "Get Analysis Report summary for multiple MD5/SHA1/SHA256 Hash codes",
-            "parameters": [
-                {
-                    "title": "Hash Codes",
-                    "name": "hashcodes",
-                    "required": true,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "Either one md5/sha1/sha256 hash or several of them in CSV format",
-                    "placeholder": "d41d8cd98f00b204e9800998ecf8427e,gwerfdc98f00b204e9810998ecf8427e"
-                }
-            ],
-            "enabled": true,
-            "output_schema": [{
-                "md5": "",
-                "sha1": "",
-                "size": "",
-                "tags": "",
-                "type": "",
-                "hosts": "",
-                "state": "",
-                "job_id": "",
-                "sha256": "",
-                "sha512": "",
-                "ssdeep": "",
-                "domains": "",
-                "imphash": "",
-                "verdict": "",
-                "av_detect": "",
-                "processes": "",
-                "vx_family": "",
-                "error_type": "",
-                "target_url": "",
-                "type_short": "",
-                "interesting": "",
-                "submissions": "",
-                "submit_name": "",
-                "certificates": "",
-                "error_origin": "",
-                "mitre_attcks": "",
-                "network_mode": "",
-                "threat_level": "",
-                "threat_score": "",
-                "url_analysis": "",
-                "file_metadata": "",
-                "environment_id": "",
-                "extracted_files": "",
-                "total_processes": "",
-                "total_signatures": "",
-                "compromised_hosts": "",
-                "analysis_start_time": "",
-                "classification_tags": "",
-                "environment_description": "",
-                "machine_learning_models": "",
-                "total_network_connections": ""
-              }]
-        },
-        {
-            "operation": "get_environment",
-            "title": "Get Environment",
-            "category": "investigation",
-            "annotation": "get_environment",
-            "description": "Retrieves all the sandbox information from the Hybrid Analysis server.",
-            "parameters": [],
-            "enabled": true,
-            "output_schema": [
-                {
-                    "id": "",
-                    "description": "",
-                    "architecture": "",
-                    "virtual_machines": "",
-                    "total_virtual_machines": "",
-                    "busy_virtual_machines": "",
-                    "group_icon": "",
-                    "analysis_mode": ""
-                }
-            ]
-        },
-        {
-            "operation": "submit_file",
-            "title": "Submit File",
-            "category": "investigation",
-            "annotation": "detonate_file",
-            "description": "Submits a file from the FortiSOAR Attachments module to the Hybrid Analysis server for analyzes.",
-            "parameters": [
-                {
-                    "title": "File ID",
-                    "name": "file_id",
-                    "required": true,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "description": "ID or IRI value of the file that you want to submit to the Hybrid Analysis server. The file ID or IRI is used to access the file in the 'Attachments' module of FortiSOAR.In the playbook, the value of the File ID field defaults to {{vars.attachment_id}} or {{vars.file_iri}}."
-                },
-                {
-                    "title": "Environment ID",
-                    "name": "environment_id",
-                    "required": true,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis\u2019",
-                    "placeholder": "300",
-                    "description": "ID of the environment in which the file is to to be run.For example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis.Available environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis, 120: 'Windows 7 64 bit, 110: 'Windows 7 32 bit (HWP Support)', or 100: Windows 7 32 bit."
-                },
-                {
-                    "title": "Do Not Share with Third Party?",
-                    "name": "no_share_third_party",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to 'true\u2019, the sample is never shared with any third party",
-                    "description": "If you select this option, i.e set it to, True, then this sample is not shared with any third-party.By default, this is set to, True."
-                },
-                {
-                    "title": "Do Not Lookup with Hash?",
-                    "name": "no_hash_lookup",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "tooltip": "When set to 'true\u2019, we can not lookup with hash",
-                    "value": false,
-                    "description": "If you select this option, i.e set it to,True then this sample is not looked up using its hashvalue.By default, this is set to, False."
-                },
-                {
-                    "title": "Priority",
-                    "name": "priority",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "Priority value between 0 (default) and 100 (highest)",
-                    "placeholder": "80",
-                    "description": "Priority value of the sample. By default, the Priority is set to, 0. You can set this value to any value between 0 and 100, which is the highest value."
-                },
-                {
-                    "title": "Action Script",
-                    "name": "action_script",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "select",
-                    "options": [
-                        "default",
-                        "default_maxantievasion",
-                        "default_randomfiles",
-                        "default_randomtheme",
-                        "default_openie"
-                    ],
-                    "tooltip": "Custom runtime action script. Available runtime scripts are following",
-                    "placeholder": "default",
-                    "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
-                },
-                {
-                    "title": "Required Memory Dump?",
-                    "name": "hybrid_analysis",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to 'false\u2019, no memory dumps or memory dump analysis will take place",
-                    "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
-                },
-                {
-                    "title": "Experimental Anti-Evasion?",
-                    "name": "experimental_anti_evasion",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to 'true\u2019, will set all experimental anti-evasion options of the kernelmode Monitor",
-                    "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
-                },
-                {
-                    "title": "Set the IN-Depth Script Logging",
-                    "name": "script_logging",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to 'true\u2019, will set the in-depth script logging engine of the kernelmode Monitor",
-                    "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
-                },
-                {
-                    "title": "Allow Sample Tampering",
-                    "name": "input_sample_tampering",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to 'true\u2019, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
-                    "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
-                },
-                {
-                    "title": "Enabled TOR Analysis?",
-                    "name": "tor_enabled_analysis",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to 'true\u2019, will route the network traffic for the analysis via TOR (if properly configured on the server)",
-                    "description": "If you select this option, i.e set it to, True, the network traffic for the analysis is routed using TOR (if it is properly configured on the server.By default, this is set to, True."
-                },
-                {
-                    "title": "Offline Analysis",
-                    "name": "offline_analysis",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to \u201ctrue\u201d, will disable outbound network traffic for the guest VM (takes precedence over \u2018tor_enabled_analysis\u2019 if both are provided)",
-                    "description": "If you select this option, i.e set it to, True, the outbound network traffic for the guest VM is disabled. The value that you set for this field takes precedence over the value that you have set for the 'Enabled TOR Analysis?' field, in case you have specified both the values.By default, this is set to, False."
-                },
-                {
-                    "title": "Email Notification",
-                    "name": "email",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "E-Mail address that may be associated with the submission for notification",
-                    "placeholder": "hswdbv@gmail.com",
-                    "description": "(Optional) Email Address that is associated with the file that you have submitted for submission. This email address will be used for notification purposes."
-                },
-                {
-                    "title": "Properties File with VxStream Directives",
-                    "name": "properties",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "Properties file that can be provided, which may contain VxStream internal directives (e.g. \u2018actionScript\u2019)",
-                    "placeholder": "actionScript",
-                    "description": "(Optional) Properties that can be associated with the submitted file. Properties might contain VxStream internal directives, such as, actionScript."
-                },
-                {
-                    "title": "Comment",
-                    "name": "comment",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
-                    "placeholder": "#tags",
-                    "description": "(Optional) Comment that you want to add when submitting the file."
-                },
-                {
-                    "title": "Custom Date Time for the Analysis System",
-                    "name": "custom_date_time",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "datetime",
-                    "tooltip": "Custom date/time that can be set for the analysis system",
-                    "description": "(Optional) Custom date and time that you can set for the analysis system."
-                },
-                {
-                    "title": "Custom CMD Line Pass to the Analysis File",
-                    "name": "custom_cmd_line",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "Commandline that should be passed to the analysis file",
-                    "description": "(Optional) Custom command line that can be passed to the analysis file."
-                },
-                {
-                    "title": "Custom Run Time",
-                    "name": "custom_run_time",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "Runtime duration (in seconds)",
-                    "placeholder": "100",
-                    "description": "(Optional) Runtime duration that you specify in seconds."
-                },
-                {
-                    "title": "Submit Name",
-                    "name": "submit_name",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "Submission Name field that will be used for file type detection and analysis",
-                    "placeholder": "My Sample",
-                    "description": "(Optional) Name of the submitted file. The Submission Name field is used for file type detection and analysis."
-                },
-                {
-                    "title": "Document Password",
-                    "name": "document_password",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "password",
-                    "tooltip": "Document password that will be used to fill-in Adobe/Office password prompts",
-                    "description": "(Optional) Password of the document that will be used to fill in Adobe or Office password prompts."
-                },
-                {
-                    "title": "Environment Variable (Format name=value)",
-                    "name": "environment_variable",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "System environment value. The value is provided in the format: name=value",
-                    "placeholder": "name=value",
-                    "description": "(Optional) System environment value. You must provide this value in the name=value format."
-                }
-            ],
-            "enabled": true,
-            "output_schema": {
-                "job_id": "",
-                "environment_id": "",
-                "sha256": ""
-            }
-        },
-        {
-            "operation": "submit_url",
-            "title": "Submit URL",
-            "category": "investigation",
-            "annotation": "submit_url",
-            "description": "Submits a URL from the FortiSOAR to the Hybrid Analysis server for analyzes.",
-            "parameters": [
-                {
-                    "title": "URL",
-                    "name": "url",
-                    "required": true,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "description": "URL to Submit"
-                },
-                {
-                    "title": "Environment ID",
-                    "name": "environment_id",
-                    "required": true,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis\u2019",
-                    "placeholder": "300",
-                    "value": 300,
-                    "description": "ID of the environment in which the file is to to be run.For example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis.Available environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis, 120: 'Windows 7 64 bit, 110: 'Windows 7 32 bit (HWP Support)', or 100: Windows 7 32 bit."
-                },
-                {
-                    "title": "Do Not Share with Third Party?",
-                    "name": "no_share_third_party",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to true, the sample is never shared with any third party",
-                    "description": "If you select this option, i.e set it to, True, then this sample is not shared with any third-party.By default, this is set to, False."
-                },
-                {
-                    "title": "Do Not Lookup with Hash?",
-                    "name": "no_hash_lookup",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "tooltip": "When set to true, we can not lookup with hash",
-                    "value": false,
-                    "description": "If you select this option, i.e set it to,True then this sample is not looked up using its hashvalue.By default, this is set to, False."
-                },
-                {
-                    "title": "Priority",
-                    "name": "priority",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "Priority value between 1 (default) and 10 (highest)",
-                    "placeholder": "1",
-                    "value":1,
-                    "description": "Optional priority value between 1 (lowest) and 10 (highest), by default all samples run with highest priority"
-                },
-                {
-                    "title": "Action Script",
-                    "name": "action_script",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "select",
-                    "options": [
-                        "default",
-                        "default_maxantievasion",
-                        "default_randomfiles",
-                        "default_randomtheme",
-                        "default_openie"
-                    ],
-                    "tooltip": "Custom runtime action script. Available runtime scripts are following",
-                    "placeholder": "default",
-                    "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
-                },
-                {
-                    "title": "Required Memory Dump?",
-                    "name": "hybrid_analysis",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to 'false\u2019, no memory dumps or memory dump analysis will take place",
-                    "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
-                },
-                {
-                    "title": "Experimental Anti-Evasion?",
-                    "name": "experimental_anti_evasion",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to true, will set all experimental anti-evasion options of the kernelmode Monitor",
-                    "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
-                },
-                {
-                    "title": "Set the IN-Depth Script Logging",
-                    "name": "script_logging",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to true, will set the in-depth script logging engine of the kernelmode Monitor",
-                    "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
-                },
-                {
-                    "title": "Allow Sample Tampering",
-                    "name": "input_sample_tampering",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "tooltip": "When set to true, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
-                    "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
-                },
-                {
-                    "title": "Enabled TOR Analysis?",
-                    "name": "tor_enabled_analysis",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to true, will route the network traffic for the analysis via TOR (if properly configured on the server)",
-                    "description": "If you select this option, i.e set it to, True, the network traffic for the analysis is routed using TOR (if it is properly configured on the server.By default, this is set to, True."
-                },
-                {
-                    "title": "Email Notification",
-                    "name": "email",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "E-Mail address that may be associated with the submission for notification",
-                    "placeholder": "hswdbv@gmail.com",
-                    "description": "Optional E-Mail address that may be associated with the submission for notification"
-                },
-                {
-                    "title": "Comment",
-                    "name": "comment",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
-                    "placeholder": "#tags"
-                },
-                {
-                    "title": "Custom Date Time for the Analysis System",
-                    "name": "custom_date_time",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "datetime",
-                    "tooltip": "Custom date/time that can be set for the analysis system",
-                    "description": "(Optional) Custom date and time that you can set for the analysis system."
-                },
-                {
-                    "title": "Custom Run Time",
-                    "name": "custom_run_time",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "Runtime duration (in seconds)",
-                    "placeholder": "100",
-                    "description": "(Optional) Runtime duration that you specify in seconds."
-                },
-                {
-                    "title": "Environment Variable (Format name=value)",
-                    "name": "environment_variable",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "System environment value. The value is provided in the format: name=value",
-                    "placeholder": "name=value",
-                    "description": "(Optional) System environment value. You must provide this value in the name=value format."
-                }
-            ],
-            "enabled": true,
-            "output_schema": {
-                "job_id": "",
-                "environment_id": "",
-                "sha256": ""
-            }
-        },        
-        {
-            "operation": "url_quick_scan",
-            "title": "Quick Scan URL",
-            "category": "investigation",
-            "annotation": "url_quick_scan",
-            "description": "Submits a URL for a Quick Scan. Query again in few minutes to check the results",
-            "parameters": [
-                {
-                    "title": "URL",
-                    "name": "url_to_scan",
-                    "required": true,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "The URL you want to scan"
-                },
-                {
-                    "title": "Do Not Share with Third Party?",
-                    "name": "no_share_third_party",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to true, the sample is never shared with any third party"
-                },
-                {
-                    "title": "Allow Community Access?",
-                    "name": "allow_community_access",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": true,
-                    "tooltip": "When set to true, the sample will be available for the community"
-                }                
-            ],
-            "enabled": true,
-            "output_schema": {
-                "job_id": "",
-                "environment_id": "",
-                "sha256": ""
-            }
-        },        
-        {
-            "operation": "get_report",
-            "title": "Get Analysis Report",
-            "category": "investigation",
-            "annotation": "get_reputation",
-            "description": "Retrieves all the analysis details from the Hybrid Analysis server for a submitted file, based on the input parameters you specify.",
-            "parameters": [
-                {
-                    "title": "Job ID",
-                    "name": "job_id",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-                    "description": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
-                },
-                {
-                    "title": "File SHA256",
-                    "name": "file_hash",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-                    "description": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
-                },
-                {
-                    "title": "Environment ID",
-                    "name": "environmentId",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-                    "description": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
-                }
-            ],
-            "enabled": true,
-            "output_schema": {
-                "sha1": "",
-                "extracted_files": [
-                    {
-                        "type_tags": [],
-                        "file_path": "",
-                        "file_size": "",
-                        "threat_level_readable": "",
-                        "threat_level": "",
-                        "av_matched": "",
-                        "av_label": "",
-                        "sha256": "",
-                        "name": "",
-                        "av_total": ""
-                    }
-                ],
-                "size": "",
-                "url_analysis": "",
-                "compromised_hosts": "",
-                "target_url": "",
-                "domains": "",
-                "threat_score": "",
-                "verdict": "",
-                "vx_family": "",
-                "hosts": [],
-                "environment_id": "",
-                "analysis_start_time": "",
-                "type": "",
-                "threat_level": "",
-                "av_detect": "",
-                "certificates": [],
-                "interesting": "",
-                "environment_description": "",
-                "total_signatures": "",
-                "total_processes": "",
-                "classification_tags": [],
-                "ssdeep": "",
-                "submit_name": "",
-                "job_id": "",
-                "imphash": "",
-                "md5": "",
-                "sha256": "",
-                "state": "",
-                "total_network_connections": "",
-                "processes": []
-            }
-        },
-        {
-            "operation": "conditional_search",
-            "title": "Advanced Search",
-            "category": "investigation",
-            "annotation": "search_query",
-            "description": "Retrieves all the reports from the Hybrid Analysis server that match the input parameters you specify.",
-            "parameters": [
-                {
-                    "title": "File Name",
-                    "name": "filename",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. invoice.exe",
-                    "description": "Name of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "File Type",
-                    "name": "filetype",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. docx"
-                },
-                {
-                    "title": "File Type Description",
-                    "name": "filetype_desc",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. PE32 executable"
-                },
-                {
-                    "title": "Verdict",
-                    "name": "verdict",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "select",
-                    "options": [
-                        "Whitelisted",
-                        "No Verdict",
-                        "No Specific Threat",
-                        "Suspicious",
-                        "Malicious"
-                    ],
-                    "description": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious."
-                },
-                {
-                    "title": "AV Multiscan range",
-                    "name": "av_detect",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. 50-70 [min 0, max 100]",
-                    "description": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "AV Family Substring",
-                    "name": "vx_family",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. nemucod",
-                    "description": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "Hash Tag",
-                    "name": "tag",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. ransomware",
-                    "description": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "Port",
-                    "name": "port",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "placeholder": "e.g. 8080",
-                    "description": "Port of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "Host",
-                    "name": "host",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. 192.168.0.1",
-                    "description": "Host of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "Domain",
-                    "name": "domain",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. checkip.dyndns.org",
-                    "description": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "HTTP Request Substring",
-                    "name": "url",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. google",
-                    "description": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "Similar Samples",
-                    "name": "similar_to",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. <sha256>",
-                    "description": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value."
-                },
-                {
-                    "title": "Sample Context",
-                    "name": "context",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "placeholder": "e.g. <sha256>",
-                    "description": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "IMP Hash",
-                    "name": "imp_hash",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "description": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "SS Deep",
-                    "name": "ssdeep",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "description": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server."
-                },
-                {
-                    "title": "Authenti Hash",
-                    "name": "authentihash",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text"
-                }
-            ],
-            "enabled": true,
-            "output_schema": {
-                "count": "",
-                "result": [
-                    {
-                        "vx_family": "",
-                        "verdict": "",
-                        "submit_name": "",
-                        "type_short": "",
-                        "job_id": "",
-                        "analysis_start_time": "",
-                        "environment_description": "",
-                        "threat_score": "",
-                        "av_detect": "",
-                        "sha256": "",
-                        "environment_id": "",
-                        "size": "",
-                        "type": ""
-                    }
-                ],
-                "search_terms": [
-                    {
-                        "id": "",
-                        "value": ""
-                    }
-                ]
-            }
-        },
-        {
-            "operation": "get_sample_dropped_file",
-            "title": "Get Files Dropped by Sample",
-            "category": "investigation",
-            "annotation": "get_file",
-            "description": "Retrieves all the details of the dropped file from the Hybrid Analysis server and adds the file to the FortiSOAR Attachmentsmodule. You specify the sample for which you want to retrieve dropped files, based on the input parameters you have specified.",
-            "parameters": [
-                {
-                    "title": "Job ID",
-                    "name": "job_id",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-                    "description": "ID of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
-                },
-                {
-                    "title": "File SHA256",
-                    "name": "file_hash",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-                    "description": "SHA256 value of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
-                },
-                {
-                    "title": "Environment ID",
-                    "name": "environmentId",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-                    "description": "ID of the environment on which the submitted file is to be run, whose details of the dropped file you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
-                }
-            ],
-            "enabled": true,
-            "output_schema": {}
-        },
-        {
-            "operation": "get_sample_screenshots",
-            "title": "Get Sample Screenshot",
-            "category": "investigation",
-            "annotation": "get_sample_screenshots",
-            "description": "Retrieves screenshots of specified submitted samples that are captured during analysis from the Hybrid Analysis server. You specify the sample for which you want to retrieve screenshots based on the input parameters you have specified. You can optionally also add the screenshots to the FortiSOAR Attachments module.",
-            "parameters": [
-                {
-                    "title": "Job ID",
-                    "name": "job_id",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-                    "description": "ID of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
-                },
-                {
-                    "title": "File SHA256",
-                    "name": "file_hash",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-                    "description": "SHA256 value of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
-                },
-                {
-                    "title": "Environment ID",
-                    "name": "environmentId",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-                    "description": "ID of the environment on which the submitted file is to be run, whose screenshots you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
-                },
-                {
-                    "title": "Attach Screenshots to FortiSOAR",
-                    "name": "is_attach",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "checkbox",
-                    "value": false,
-                    "description": "If you select this option, i.e set it to, True, then the sample screenshots are added to the FortiSOAR Attachments module.By default, this is set to, False."
-                }
-            ],
-            "enabled": true,
-            "output_schema": {}
-        },
-        {
-            "operation": "get_submitted_sample_state",
-            "title": "Get Submission State",
-            "category": "investigation",
-            "annotation": "get_submitted_sample_state",
-            "description": "Retrieves the state of a submitted file from the Hybrid Analysis server, based on the input parameters you have specified.",
-            "parameters": [
-                {
-                    "title": "Job ID",
-                    "name": "job_id",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-                    "description": "ID of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
-                },
-                {
-                    "title": "File SHA256",
-                    "name": "file_hash",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "text",
-                    "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-                    "description": "SHA256 value of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
-                },
-                {
-                    "title": "Environment ID",
-                    "name": "environmentId",
-                    "required": false,
-                    "editable": true,
-                    "visible": true,
-                    "type": "integer",
-                    "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-                    "description": "ID of the environment on which the submitted file is to be run, whose state information you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
-                }
-            ],
-            "enabled": true,
-            "output_schema": {
-                "error": "",
-                "state": ""
-            }
-        },
-        {
-            "operation": "get_feed",
-            "title": "Get Latest Analysis Reports",
-            "category": "investigation",
-            "annotation": "get_feed",
-            "description": "Retrieves the last 250 reports of the past 24h",
-            "parameters": [],
-            "enabled": true,
-            "output_schema": {
-                "data": [
-                    {
-                        "md5": "",
-                        "isunknown": "",
-                        "type": "",
-                        "isurlanalysis": "",
-                        "extracted_files": [],
-                        "isreliable": "",
-                        "submitname": "",
-                        "size": "",
-                        "sharedanalysis": "",
-                        "sha1": "",
-                        "process_list": "",
-                        "isinteresting": "",
-                        "sha256": "",
-                        "reporturl": "",
-                        "vt_detect": "",
-                        "avdetect": "",
-                        "threatscore": "",
-                        "environmentDescription": "",
-                        "ms_detect": "",
-                        "environmentId": "",
-                        "threatlevel": "",
-                        "threatlevel_human": "",
-                        "analysis_start_time": ""
-                    }
-                ],
-                "status": "",
-                "count": ""
-            }
-        },
-        {
-            "operation": "get_api_quota",
-            "title": "Get API Quota",
-            "category": "investigation",
-            "annotation": "get_api_quota",
-            "description": "Retrieves details of the API quota for the specified user account from the Hybrid Analysis server. You specify the user account when you are configuring the Hybrid Analysis connector.",
-            "parameters": [],
-            "enabled": true,
-            "output_schema": {
-                "response_code": "",
-                "response": {
-                    "total": {
-                        "quota_reached": ""
-                    },
-                    "quota_reached": "",
-                    "apikey": {
-                        "quota_reached": "",
-                        "used": {
-                            "omega": "",
-                            "month": "",
-                            "hour": "",
-                            "week": "",
-                            "day": ""
-                        },
-                        "quota": {
-                            "day": ""
-                        },
-                        "available": {
-                            "day": ""
-                        }
-                    }
-                }
-            }
-        },
-        {
-            "operation": "get_api_limits",
-            "title": "Get API Limit",
-            "category": "investigation",
-            "annotation": "get_api_limit",
-            "description": "Retrieves details of the API limit for the specified user account from the Hybrid Analysis server. You specify the user account when you are configuring the Hybrid Analysis connector.",
-            "parameters": [],
-            "enabled": true,
-            "output_schema": {
-                "response": {
-                    "limit_reached": "",
-                    "used": {
-                        "minute": "",
-                        "hour": ""
-                    },
-                    "name_of_reached_limit": "",
-                    "limits": {
-                        "minute": "",
-                        "hour": ""
-                    }
-                },
-                "response_code": ""
-            }
+          "title": "Hash Codes",
+          "name": "hashcodes",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Either one md5/sha1/sha256 hash or several of them in CSV format",
+          "placeholder": "d41d8cd98f00b204e9800998ecf8427e,gwerfdc98f00b204e9810998ecf8427e"
         }
-    ],
-    "icon_medium_name": "",
-    "cs_approved": false,
-    "cs_compatible": true,
-    "help_online": "https://docs.fortinet.com/product/fortisoar"
+      ],
+      "enabled": true,
+      "output_schema": [
+        {
+          "job_id": "",
+          "environment_id": "",
+          "environment_description": "",
+          "size": "",
+          "type": "",
+          "type_short": [],
+          "target_url": "",
+          "state": "",
+          "error_type": "",
+          "error_origin": "",
+          "submit_name": "",
+          "md5": "",
+          "sha1": "",
+          "sha256": "",
+          "sha512": "",
+          "ssdeep": "",
+          "imphash": "",
+          "av_detect": "",
+          "vx_family": "",
+          "url_analysis": "",
+          "analysis_start_time": "",
+          "threat_score": "",
+          "interesting": "",
+          "threat_level": "",
+          "verdict": "",
+          "certificates": [],
+          "domains": [],
+          "classification_tags": [],
+          "compromised_hosts": [],
+          "hosts": [],
+          "total_network_connections": "",
+          "total_processes": "",
+          "total_signatures": "",
+          "extracted_files": [],
+          "file_metadata": "",
+          "processes": [],
+          "tags": [],
+          "mitre_attcks": [],
+          "submissions": [
+            {
+              "submission_id": "",
+              "filename": "",
+              "url": "",
+              "created_at": ""
+            }
+          ],
+          "network_mode": "",
+          "machine_learning_models": []
+        }
+      ]
+    },
+    {
+      "operation": "get_environment",
+      "title": "Get Environment",
+      "category": "investigation",
+      "annotation": "get_environment",
+      "description": "Retrieves all the sandbox information from the Hybrid Analysis server.",
+      "parameters": [],
+      "enabled": true,
+      "output_schema": [
+        {
+          "id": "",
+          "environment_id": "",
+          "description": "",
+          "group_icon": "",
+          "architecture": "",
+          "analysis_mode": "",
+          "virtual_machines": [],
+          "total_virtual_machines": "",
+          "busy_virtual_machines": "",
+          "invalid_virtual_machines": ""
+        }
+      ]
+    },
+    {
+      "operation": "submit_file",
+      "title": "Submit File",
+      "category": "investigation",
+      "annotation": "detonate_file",
+      "description": "Submits a file from the FortiSOAR Attachments module to the Hybrid Analysis server for analyzes.",
+      "parameters": [
+        {
+          "title": "Attachment ID",
+          "name": "value",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Attachment ID that is used to access the attachment metadata from the FortiSOAR™ Attachments module.\nIn the playbook, this defaults to the{{vars.attachment_id}} value."
+        },
+        {
+          "title": "Environment ID",
+          "name": "environment_id",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis\u2019",
+          "placeholder": "300",
+          "description": "ID of the environment in which the file is to to be run.For example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis.Available environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis, 120: 'Windows 7 64 bit, 110: 'Windows 7 32 bit (HWP Support)', or 100: Windows 7 32 bit."
+        },
+        {
+          "title": "Do Not Share with Third Party?",
+          "name": "no_share_third_party",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to 'true\u2019, the sample is never shared with any third party",
+          "description": "If you select this option, i.e set it to, True, then this sample is not shared with any third-party.By default, this is set to, True."
+        },
+        {
+          "title": "Do Not Lookup with Hash?",
+          "name": "no_hash_lookup",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "tooltip": "When set to 'true\u2019, we can not lookup with hash",
+          "value": false,
+          "description": "If you select this option, i.e set it to,True then this sample is not looked up using its hashvalue.By default, this is set to, False."
+        },
+        {
+          "title": "Priority",
+          "name": "priority",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Priority value between 0 (default) and 100 (highest)",
+          "placeholder": "80",
+          "description": "Priority value of the sample. By default, the Priority is set to, 0. You can set this value to any value between 0 and 100, which is the highest value."
+        },
+        {
+          "title": "Action Script",
+          "name": "action_script",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "default",
+            "default_maxantievasion",
+            "default_randomfiles",
+            "default_randomtheme",
+            "default_openie"
+          ],
+          "tooltip": "Custom runtime action script. Available runtime scripts are following",
+          "placeholder": "default",
+          "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
+        },
+        {
+          "title": "Required Memory Dump?",
+          "name": "hybrid_analysis",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to 'false\u2019, no memory dumps or memory dump analysis will take place",
+          "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
+        },
+        {
+          "title": "Experimental Anti-Evasion?",
+          "name": "experimental_anti_evasion",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to 'true\u2019, will set all experimental anti-evasion options of the kernelmode Monitor",
+          "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
+        },
+        {
+          "title": "Set the IN-Depth Script Logging",
+          "name": "script_logging",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to 'true\u2019, will set the in-depth script logging engine of the kernelmode Monitor",
+          "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
+        },
+        {
+          "title": "Allow Sample Tampering",
+          "name": "input_sample_tampering",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to 'true\u2019, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
+          "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
+        },
+        {
+          "title": "Enabled TOR Analysis?",
+          "name": "tor_enabled_analysis",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to 'true\u2019, will route the network traffic for the analysis via TOR (if properly configured on the server)",
+          "description": "If you select this option, i.e set it to, True, the network traffic for the analysis is routed using TOR (if it is properly configured on the server.By default, this is set to, True."
+        },
+        {
+          "title": "Offline Analysis",
+          "name": "offline_analysis",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to \u201ctrue\u201d, will disable outbound network traffic for the guest VM (takes precedence over \u2018tor_enabled_analysis\u2019 if both are provided)",
+          "description": "If you select this option, i.e set it to, True, the outbound network traffic for the guest VM is disabled. The value that you set for this field takes precedence over the value that you have set for the 'Enabled TOR Analysis?' field, in case you have specified both the values.By default, this is set to, False."
+        },
+        {
+          "title": "Email Notification",
+          "name": "email",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "E-Mail address that may be associated with the submission for notification",
+          "placeholder": "hswdbv@gmail.com",
+          "description": "(Optional) Email Address that is associated with the file that you have submitted for submission. This email address will be used for notification purposes."
+        },
+        {
+          "title": "Properties File with VxStream Directives",
+          "name": "properties",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Properties file that can be provided, which may contain VxStream internal directives (e.g. \u2018actionScript\u2019)",
+          "placeholder": "actionScript",
+          "description": "(Optional) Properties that can be associated with the submitted file. Properties might contain VxStream internal directives, such as, actionScript."
+        },
+        {
+          "title": "Comment",
+          "name": "comment",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
+          "placeholder": "#tags",
+          "description": "(Optional) Comment that you want to add when submitting the file."
+        },
+        {
+          "title": "Custom Date Time for the Analysis System",
+          "name": "custom_date_time",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "tooltip": "Custom date/time that can be set for the analysis system",
+          "description": "(Optional) Custom date and time that you can set for the analysis system."
+        },
+        {
+          "title": "Custom CMD Line Pass to the Analysis File",
+          "name": "custom_cmd_line",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Commandline that should be passed to the analysis file",
+          "description": "(Optional) Custom command line that can be passed to the analysis file."
+        },
+        {
+          "title": "Custom Run Time",
+          "name": "custom_run_time",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Runtime duration (in seconds)",
+          "placeholder": "100",
+          "description": "(Optional) Runtime duration that you specify in seconds."
+        },
+        {
+          "title": "Submit Name",
+          "name": "submit_name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Submission Name field that will be used for file type detection and analysis",
+          "placeholder": "My Sample",
+          "description": "(Optional) Name of the submitted file. The Submission Name field is used for file type detection and analysis."
+        },
+        {
+          "title": "Document Password",
+          "name": "document_password",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "password",
+          "tooltip": "Document password that will be used to fill-in Adobe/Office password prompts",
+          "description": "(Optional) Password of the document that will be used to fill in Adobe or Office password prompts."
+        },
+        {
+          "title": "Environment Variable (Format name=value)",
+          "name": "environment_variable",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "System environment value. The value is provided in the format: name=value",
+          "placeholder": "name=value",
+          "description": "(Optional) System environment value. You must provide this value in the name=value format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "job_id": "",
+        "environment_id": "",
+        "submission_id": "",
+        "sha256": ""
+      }
+    },
+    {
+      "operation": "submit_url",
+      "title": "Submit URL",
+      "category": "investigation",
+      "annotation": "submit_url",
+      "description": "Submits a URL from the FortiSOAR to the Hybrid Analysis server for analyzes.",
+      "parameters": [
+        {
+          "title": "URL",
+          "name": "url",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "URL to Submit"
+        },
+        {
+          "title": "Environment ID",
+          "name": "environment_id",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis\u2019",
+          "placeholder": "300",
+          "value": 300,
+          "description": "ID of the environment in which the file is to to be run.For example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis.Available environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis, 120: 'Windows 7 64 bit, 110: 'Windows 7 32 bit (HWP Support)', or 100: Windows 7 32 bit."
+        },
+        {
+          "title": "Do Not Share with Third Party?",
+          "name": "no_share_third_party",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to true, the sample is never shared with any third party",
+          "description": "If you select this option, i.e set it to, True, then this sample is not shared with any third-party.By default, this is set to, False."
+        },
+        {
+          "title": "Do Not Lookup with Hash?",
+          "name": "no_hash_lookup",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "tooltip": "When set to true, we can not lookup with hash",
+          "value": false,
+          "description": "If you select this option, i.e set it to,True then this sample is not looked up using its hashvalue.By default, this is set to, False."
+        },
+        {
+          "title": "Priority",
+          "name": "priority",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Priority value between 1 (default) and 10 (highest)",
+          "placeholder": "1",
+          "value": 1,
+          "description": "Optional priority value between 1 (lowest) and 10 (highest), by default all samples run with highest priority"
+        },
+        {
+          "title": "Action Script",
+          "name": "action_script",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "default",
+            "default_maxantievasion",
+            "default_randomfiles",
+            "default_randomtheme",
+            "default_openie"
+          ],
+          "tooltip": "Custom runtime action script. Available runtime scripts are following",
+          "placeholder": "default",
+          "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
+        },
+        {
+          "title": "Required Memory Dump?",
+          "name": "hybrid_analysis",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to 'false\u2019, no memory dumps or memory dump analysis will take place",
+          "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
+        },
+        {
+          "title": "Experimental Anti-Evasion?",
+          "name": "experimental_anti_evasion",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to true, will set all experimental anti-evasion options of the kernelmode Monitor",
+          "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
+        },
+        {
+          "title": "Set the IN-Depth Script Logging",
+          "name": "script_logging",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to true, will set the in-depth script logging engine of the kernelmode Monitor",
+          "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
+        },
+        {
+          "title": "Allow Sample Tampering",
+          "name": "input_sample_tampering",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "tooltip": "When set to true, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
+          "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
+        },
+        {
+          "title": "Enabled TOR Analysis?",
+          "name": "tor_enabled_analysis",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to true, will route the network traffic for the analysis via TOR (if properly configured on the server)",
+          "description": "If you select this option, i.e set it to, True, the network traffic for the analysis is routed using TOR (if it is properly configured on the server.By default, this is set to, True."
+        },
+        {
+          "title": "Email Notification",
+          "name": "email",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "E-Mail address that may be associated with the submission for notification",
+          "placeholder": "hswdbv@gmail.com",
+          "description": "Optional E-Mail address that may be associated with the submission for notification"
+        },
+        {
+          "title": "Comment",
+          "name": "comment",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
+          "placeholder": "#tags"
+        },
+        {
+          "title": "Custom Date Time for the Analysis System",
+          "name": "custom_date_time",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "datetime",
+          "tooltip": "Custom date/time that can be set for the analysis system",
+          "description": "(Optional) Custom date and time that you can set for the analysis system."
+        },
+        {
+          "title": "Custom Run Time",
+          "name": "custom_run_time",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "Runtime duration (in seconds)",
+          "placeholder": "100",
+          "description": "(Optional) Runtime duration that you specify in seconds."
+        },
+        {
+          "title": "Environment Variable (Format name=value)",
+          "name": "environment_variable",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "System environment value. The value is provided in the format: name=value",
+          "placeholder": "name=value",
+          "description": "(Optional) System environment value. You must provide this value in the name=value format."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "submission_type": "",
+        "job_id": "",
+        "submission_id": "",
+        "environment_id": "",
+        "sha256": ""
+      }
+    },
+    {
+      "operation": "url_quick_scan",
+      "title": "Quick Scan URL",
+      "category": "investigation",
+      "annotation": "url_quick_scan",
+      "description": "Submits a URL for a Quick Scan. Query again in few minutes to check the results",
+      "parameters": [
+        {
+          "title": "URL",
+          "name": "url_to_scan",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "The URL you want to scan"
+        },
+        {
+          "title": "Do Not Share with Third Party?",
+          "name": "no_share_third_party",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to true, the sample is never shared with any third party"
+        },
+        {
+          "title": "Allow Community Access?",
+          "name": "allow_community_access",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": true,
+          "tooltip": "When set to true, the sample will be available for the community"
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "submission_type": "",
+        "id": "",
+        "sha256": "",
+        "scanners": [
+          {
+            "name": "",
+            "status": "",
+            "error_message": "",
+            "progress": "",
+            "total": "",
+            "positives": "",
+            "percent": "",
+            "anti_virus_results": []
+          }
+        ],
+        "whitelist": [],
+        "reports": [
+        ],
+        "finished": ""
+      }
+    },
+    {
+      "operation": "get_report",
+      "title": "Get Analysis Report",
+      "category": "investigation",
+      "annotation": "get_reputation",
+      "description": "Retrieves all the analysis details from the Hybrid Analysis server for a submitted file, based on the input parameters you specify.",
+      "parameters": [
+        {
+          "title": "Job ID",
+          "name": "job_id",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
+          "description": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
+        },
+        {
+          "title": "File SHA256",
+          "name": "file_hash",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
+          "description": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+        },
+        {
+          "title": "Environment ID",
+          "name": "environmentId",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
+          "description": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "job_id": "",
+        "environment_id": "",
+        "environment_description": "",
+        "size": "",
+        "type": "",
+        "type_short": [
+        ],
+        "target_url": "",
+        "state": "",
+        "error_type": "",
+        "error_origin": "",
+        "submit_name": "",
+        "md5": "",
+        "sha1": "",
+        "sha256": "",
+        "sha512": "",
+        "ssdeep": "",
+        "imphash": "",
+        "av_detect": "",
+        "vx_family": "",
+        "url_analysis": "",
+        "analysis_start_time": "",
+        "threat_score": "",
+        "interesting": "",
+        "threat_level": "",
+        "verdict": "",
+        "certificates": [],
+        "domains": [],
+        "classification_tags": [],
+        "compromised_hosts": [],
+        "hosts": [],
+        "total_network_connections": "",
+        "total_processes": "",
+        "total_signatures": "",
+        "extracted_files": [],
+        "file_metadata": "",
+        "processes": [
+          {
+            "uid": "",
+            "parentuid": "",
+            "name": "",
+            "normalized_path": "",
+            "command_line": "",
+            "sha256": "",
+            "av_label": "",
+            "av_matched": "",
+            "av_total": "",
+            "pid": "",
+            "icon": "",
+            "file_accesses": [],
+            "created_files": [],
+            "registry": [],
+            "mutants": [],
+            "handles": [],
+            "streams": [],
+            "script_calls": [],
+            "process_flags": []
+          }
+        ],
+        "tags": [],
+        "mitre_attcks": [],
+        "submissions": [
+          {
+            "submission_id": "",
+            "filename": "",
+            "url": "",
+            "created_at": ""
+          }
+        ],
+        "network_mode": "",
+        "machine_learning_models": []
+      }
+    },
+    {
+      "operation": "conditional_search",
+      "title": "Advanced Search",
+      "category": "investigation",
+      "annotation": "search_query",
+      "description": "Retrieves all the reports from the Hybrid Analysis server that match the input parameters you specify.",
+      "parameters": [
+        {
+          "title": "File Name",
+          "name": "filename",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. invoice.exe",
+          "description": "Name of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "File Type",
+          "name": "filetype",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. docx"
+        },
+        {
+          "title": "File Type Description",
+          "name": "filetype_desc",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. PE32 executable"
+        },
+        {
+          "title": "Verdict",
+          "name": "verdict",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Whitelisted",
+            "No Verdict",
+            "No Specific Threat",
+            "Suspicious",
+            "Malicious"
+          ],
+          "description": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious."
+        },
+        {
+          "title": "AV Multiscan range",
+          "name": "av_detect",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. 50-70 [min 0, max 100]",
+          "description": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "AV Family Substring",
+          "name": "vx_family",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. nemucod",
+          "description": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Hash Tag",
+          "name": "tag",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. ransomware",
+          "description": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Port",
+          "name": "port",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "placeholder": "e.g. 8080",
+          "description": "Port of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Host",
+          "name": "host",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. 192.168.0.1",
+          "description": "Host of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Domain",
+          "name": "domain",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. checkip.dyndns.org",
+          "description": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "HTTP Request Substring",
+          "name": "url",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. google",
+          "description": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Similar Samples",
+          "name": "similar_to",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. <sha256>",
+          "description": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value."
+        },
+        {
+          "title": "Sample Context",
+          "name": "context",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "placeholder": "e.g. <sha256>",
+          "description": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "IMP Hash",
+          "name": "imp_hash",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "SS Deep",
+          "name": "ssdeep",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Authenti Hash",
+          "name": "authentihash",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text"
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "count": "",
+        "result": [
+          {
+            "vx_family": "",
+            "verdict": "",
+            "submit_name": "",
+            "type_short": "",
+            "job_id": "",
+            "analysis_start_time": "",
+            "environment_description": "",
+            "threat_score": "",
+            "av_detect": "",
+            "sha256": "",
+            "environment_id": "",
+            "size": "",
+            "type": ""
+          }
+        ],
+        "search_terms": [
+          {
+            "id": "",
+            "value": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_sample_dropped_file",
+      "title": "Get Files Dropped by Sample",
+      "category": "investigation",
+      "annotation": "get_file",
+      "description": "Retrieves all the details of the dropped file from the Hybrid Analysis server and adds the file to the FortiSOAR Attachmentsmodule. You specify the sample for which you want to retrieve dropped files, based on the input parameters you have specified.",
+      "parameters": [
+        {
+          "title": "Job ID",
+          "name": "job_id",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
+          "description": "ID of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
+        },
+        {
+          "title": "File SHA256",
+          "name": "file_hash",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
+          "description": "SHA256 value of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+        },
+        {
+          "title": "Environment ID",
+          "name": "environmentId",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
+          "description": "ID of the environment on which the submitted file is to be run, whose details of the dropped file you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {}
+    },
+    {
+      "operation": "get_sample_screenshots",
+      "title": "Get Sample Screenshot",
+      "category": "investigation",
+      "annotation": "get_sample_screenshots",
+      "description": "Retrieves screenshots of specified submitted samples that are captured during analysis from the Hybrid Analysis server. You specify the sample for which you want to retrieve screenshots based on the input parameters you have specified. You can optionally also add the screenshots to the FortiSOAR Attachments module.",
+      "parameters": [
+        {
+          "title": "Job ID",
+          "name": "job_id",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
+          "description": "ID of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
+        },
+        {
+          "title": "File SHA256",
+          "name": "file_hash",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
+          "description": "SHA256 value of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+        },
+        {
+          "title": "Environment ID",
+          "name": "environmentId",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
+          "description": "ID of the environment on which the submitted file is to be run, whose screenshots you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
+        },
+        {
+          "title": "Attach Screenshots to FortiSOAR",
+          "name": "is_attach",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "checkbox",
+          "value": false,
+          "description": "If you select this option, i.e set it to, True, then the sample screenshots are added to the FortiSOAR Attachments module.By default, this is set to, False."
+        }
+      ],
+      "enabled": true,
+      "output_schema": [
+        {
+          "name": "",
+          "image": "",
+          "date": ""
+        }
+      ]
+    },
+    {
+      "operation": "get_submitted_sample_state",
+      "title": "Get Submission State",
+      "category": "investigation",
+      "annotation": "get_submitted_sample_state",
+      "description": "Retrieves the state of a submitted file from the Hybrid Analysis server, based on the input parameters you have specified.",
+      "parameters": [
+        {
+          "title": "Job ID",
+          "name": "job_id",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
+          "description": "ID of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the job ID when you submit a sample file."
+        },
+        {
+          "title": "File SHA256",
+          "name": "file_hash",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
+          "description": "SHA256 value of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+        },
+        {
+          "title": "Environment ID",
+          "name": "environmentId",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "integer",
+          "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
+          "description": "ID of the environment on which the submitted file is to be run, whose state information you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "state": "",
+        "error_type": "",
+        "error_origin": "",
+        "error": "",
+        "related_reports": []
+      }
+    },
+    {
+      "operation": "get_feed",
+      "title": "Get Latest Analysis Reports",
+      "category": "investigation",
+      "annotation": "get_feed",
+      "description": "Retrieves the last 250 reports of the past 24h",
+      "parameters": [],
+      "enabled": true,
+      "output_schema": {
+        "count": "",
+        "status": "",
+        "data": [
+          {
+            "job_id": "",
+            "md5": "",
+            "sha1": "",
+            "sha256": "",
+            "interesting": "",
+            "analysis_start_time": "",
+            "threat_score": "",
+            "threat_level": "",
+            "threat_level_human": "",
+            "av_detect": "",
+            "unknown": "",
+            "submit_name": "",
+            "url_analysis": "",
+            "size": "",
+            "type": "",
+            "environment_id": "",
+            "environment_description": "",
+            "shared_analysis": "",
+            "reliable": "",
+            "report_url": "",
+            "vt_detect": "",
+            "ms_detect": "",
+            "processes": [
+              {
+                "uid": "",
+                "name": "",
+                "normalized_path": "",
+                "command_line": "",
+                "sha256": ""
+              }
+            ],
+            "ssdeep": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_api_quota",
+      "title": "Get API Quota",
+      "category": "investigation",
+      "annotation": "get_api_quota",
+      "description": "Retrieves details of the API quota for the specified user account from the Hybrid Analysis server. You specify the user account when you are configuring the Hybrid Analysis connector.",
+      "parameters": [],
+      "enabled": true,
+      "output_schema": {
+        "detonation": {
+          "total": "",
+          "apikey": {
+            "quota": {
+              "hour": "",
+              "day": "",
+              "week": "",
+              "month": "",
+              "year": "",
+              "omega": ""
+            },
+            "used": {
+              "hour": "",
+              "day": "",
+              "week": "",
+              "month": "",
+              "year": "",
+              "omega": ""
+            },
+            "available": {
+              "hour": "",
+              "day": "",
+              "week": "",
+              "month": "",
+              "year": "",
+              "omega": ""
+            },
+            "quota_reached": ""
+          },
+          "quota_reached": ""
+        },
+        "quick_scan": {
+          "total": "",
+          "apikey": "",
+          "quota_reached": ""
+        }
+      }
+    }
+  ],
+  "icon_medium_name": "",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "help_online": ""
 }

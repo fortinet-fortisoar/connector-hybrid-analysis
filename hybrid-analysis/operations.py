@@ -1,28 +1,34 @@
-import ast, io, json, requests, logging
+""" Copyright start
+  Copyright (C) 2008 - 2022 Fortinet Inc.
+  All rights reserved.
+  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+  Copyright end """
+
+import ast, io, json, requests
 from connectors.core.connector import get_logger, ConnectorError
 from cshmac.requests import HmacAuth
 from django.conf import settings
 from integrations.crudhub import maybe_json_or_raise
-from requests_toolbelt.utils import dump
+from connectors.cyops_utilities.builtins import download_file_from_cyops
+from integrations.crudhub import make_request
+from os.path import join
 
 logger = get_logger('hybrid analysis')
-#logger.setLevel(logging.DEBUG) #Uncomment to force debug logging
 
-GET_FEED = '/api/v2/api/feed/latest'
+GET_FEED = '/api/v2/feed/latest'
 GET_REPORT = '/api/v2/report/{ID}/summary'
 SUBMIT_FILE = '/api/v2/submit/file'
 GET_ENVIRONMENTS = '/api/v2/system/environments'
 GET_QUOTA = '/api/v2/key/submission-quota'
-INSTANCE_VERSION = '/api/instance-version'
 KEY_LIMITS = '/api/v2/key/current'
 SEARCH_HASHES = '/api/v2/search/hashes'
 SAMPLE_DROPPED_FILES = '/api/v2/report/{ID}/dropped-files'
 SAMPLE_SCREENSHOTS = '/api/v2/report/{ID}/screenshots'
 SEARCH = '/api/v2/search/terms'
 SUBMISSION_STATE = '/api/v2/report/{ID}/state'
-API_LIMIT = '/api/api-limits'
 URL_QUICK_SCAN = '/api/v2/quick-scan/url'
 SUBMIT_URL = '/api/v2/submit/url'
+
 
 def str_to_list(input_str):
     if isinstance(input_str, str) and len(input_str) > 0:
@@ -31,6 +37,7 @@ def str_to_list(input_str):
         return input_str
     else:
         return []
+
 
 def _get_input(params, key, type):
     ret_val = params.get(key, None)
@@ -85,7 +92,7 @@ def _api_request(method, url, config, payload={}, header=None, file={}, params={
         header = {'api-key': api_key, 'User-Agent': 'Python-Agent'}
         api_response = requests.request(method=method, url=url, headers=header, params=params, data=payload, files=file,
                                         verify=verify_ssl)
-        logger.debug('REQUESTS_DUMP:\n{}'.format(dump.dump_all(api_response).decode('utf-8')))                                        
+        # logger.debug('REQUESTS_DUMP:\n{}'.format(dump.dump_all(api_response).decode('utf-8')))
         if api_response.ok:
             if json_format == True:
                 return json.loads(api_response.content.decode('utf-8'))
@@ -111,7 +118,7 @@ def _upload_file_to_cyops(file_name, file_content, file_type):
         file_id = response['@id']
         file_description = file_name
         attach_response = _make_request('/api/3/attachments', 'POST',
-                                       {'name': file_name, 'file': file_id, 'description': file_description})
+                                        {'name': file_name, 'file': file_id, 'description': file_description})
         logger.info('attach file complete: {}')
         return attach_response
     except Exception as err:
@@ -124,8 +131,11 @@ def _get_params_in_bulk(params, params_list):
         params_values = {}
         for var in params_list:
             params_values.update(
-                {var["field_name"]: _get_input(params, var["field_name"], var["field_type"])}) if _get_input(params, var[
-                "field_name"], var["field_type"]) else None
+                {var["field_name"]: _get_input(params, var["field_name"], var["field_type"])}) if _get_input(params,
+                                                                                                             var[
+                                                                                                                 "field_name"],
+                                                                                                             var[
+                                                                                                                 "field_type"]) else None
         return params_values
     except Exception as Err:
         raise ConnectorError(str(Err))
@@ -181,18 +191,9 @@ def get_api_quota(config, params):
         raise ConnectorError(Err)
 
 
-def get_api_limits(config, params):
-    try:
-        return _api_request("get", API_LIMIT, config)
-    except Exception as Err:
-        logger.exception("Fail : {}".format(str(Err)))
-        raise ConnectorError(Err)
-
-
 def get_feed(config, params):
     try:
-        days = _get_input(params, "days", int)
-        url = '{0}{1}'.format(GET_FEED, days)
+        url = '{0}'.format(GET_FEED)
         return _api_request("get", url, config)
     except Exception as Err:
         logger.exception("Fail : {}".format(str(Err)))
@@ -225,7 +226,7 @@ def get_sample_dropped_file(config, params):
 
 def get_sample_screenshots(config, params):
     try:
-        result ={}
+        result = {}
         is_attach = _get_input(params, "is_attach", bool)
         url = _get_url_from_job_id_or_file_hash(params, SAMPLE_SCREENSHOTS)
         if is_attach:
@@ -274,20 +275,25 @@ def conditional_search(config, params):
                          {"field_name": "ssdeep", "field_type": str},
                          {"field_name": "authentihash", "field_type": str}]
         search_params_values = _get_params_in_bulk(params, search_params)
-        search_params_values.update({"verdict": int(verdict_value.index(search_params_values.get("verdict"))) + 1 }) if search_params_values.get("verdict") else None
+        search_params_values.update(
+            {"verdict": int(verdict_value.index(search_params_values.get("verdict"))) + 1}) if search_params_values.get(
+            "verdict") else None
         return _api_request("post", SEARCH, config, payload=search_params_values)
     except Exception as Err:
         logger.exception("Fail : {}".format(str(Err)))
         raise ConnectorError(Err)
 
+
 def url_quick_scan(config, params):
     try:
         url_quick_scan_payload = {
-            'scan_type':'all',
+            'scan_type': 'all',
             'url': _get_input(params, "url_to_scan", str),
-            'no_share_third_party': params.get('no_share_third_party') if params.get('no_share_third_party') is not None else True,
-            'allow_community_access': params.get('allow_community_access') if params.get('allow_community_access') is not None else True,
-            }
+            'no_share_third_party': params.get('no_share_third_party') if params.get(
+                'no_share_third_party') is not None else True,
+            'allow_community_access': params.get('allow_community_access') if params.get(
+                'allow_community_access') is not None else True,
+        }
 
         return _api_request("post", URL_QUICK_SCAN, config, payload=url_quick_scan_payload)
 
@@ -303,6 +309,26 @@ def hashes_search(config, params):
     except Exception as Err:
         logger.exception("Fail : {}".format(str(Err)))
         raise ConnectorError(Err)
+
+
+def handle_params(params):
+    value = str(params.get('value'))
+    try:
+        if isinstance(value, bytes):
+            value = value.decode('utf-8')
+        if not value.startswith('/api/3/attachments/'):
+            value = '/api/3/attachments/{0}'.format(value)
+        attachment_data = make_request(value, 'GET')
+        file_iri = attachment_data['file']['@id']
+        file_name = attachment_data['file']['filename']
+        logger.info('file id = {0}, file_name = {1}'.format(file_iri, file_name))
+        return file_iri, file_name
+    except Exception as err:
+        logger.info('handle_params(): Exception occurred {0}'.format(err))
+        raise ConnectorError(
+            'Requested resource could not be found with input type Attachment ID and value "{0}"'.format
+            (value.replace('/api/3/attachments/', '')))
+
 
 def submit_file(config, params):
     try:
@@ -328,19 +354,17 @@ def submit_file(config, params):
                               {"field_name": "environment_variable", "field_type": str}
                               ]
         submit_file_params_values = _get_params_in_bulk(params, submit_file_params)
-        file_id = _get_input(params, "file_id", str)
-        file_data = _make_request(file_id, "get")
-        if isinstance(file_data, bytes):
-            file_obj = io.BytesIO(file_data)
-        else:
-            file_obj = io.StringIO(file_data)
-        # FIXME: _get_config() should not be needed here
-        api_key, secret_key, server_url, verify_ssl = _get_config(config)
-        file = {"file": file_obj}
-        return _api_request("post", SUBMIT_FILE, config, payload=submit_file_params_values, file=file)
+        file_iri, file_name = handle_params(params)
+        file_path = join('/tmp', download_file_from_cyops(file_iri)['cyops_file_path'])
+        logger.info("File Path: {0}".format(file_path))
+        with open(file_path, 'rb') as attachment:
+            content = attachment.read()
+            if content:
+                files = {'file': content}
+                return _api_request("post", SUBMIT_FILE, config, payload=submit_file_params_values, file=files)
     except Exception as Err:
-        logger.exception("Fail : {}".format(str(Err)))
-        raise ConnectorError(Err)
+        logger.exception("{0}".format(str(Err)))
+        raise ConnectorError("{0}".format(str(Err)))
 
 
 def submit_url(config, params):
@@ -362,7 +386,7 @@ def submit_url(config, params):
                              {"field_name": "custom_date_time", "field_type": str},
                              {"field_name": "custom_run_time", "field_type": int},
                              {"field_name": "environment_variable", "field_type": str}
-                             ]                           
+                             ]
         submit_url_params_values = _get_params_in_bulk(params, submit_url_params)
         return _api_request("post", SUBMIT_URL, config, payload=submit_url_params_values)
     except Exception as Err:
@@ -375,7 +399,6 @@ hybrid_analysis_ops = {
     'submit_file': submit_file,
     'get_environment': get_environment,
     'get_api_quota': get_api_quota,
-    'get_api_limits': get_api_limits,
     'get_sample_dropped_file': get_sample_dropped_file,
     'get_sample_screenshots': get_sample_screenshots,
     'get_submitted_sample_state': get_submitted_sample_state,
