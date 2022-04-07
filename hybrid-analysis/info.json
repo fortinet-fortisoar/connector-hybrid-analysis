@@ -2,7 +2,7 @@
   "name": "hybrid-analysis",
   "version": "2.0.0",
   "label": "Hybrid Analysis",
-  "description": "Hybrid Analysis provides malware analysis service. This connector facilitates automated operations such as ",
+  "description": "Hybrid Analysis provides malware analysis service. This connector facilitates automated operations such as get report, environment, submit file, submit URL, etc.",
   "publisher": "Community",
   "icon_small_name": "Hybrid_Analysis_small.png",
   "icon_large_name": "Hybrid_Analysis_medium.png",
