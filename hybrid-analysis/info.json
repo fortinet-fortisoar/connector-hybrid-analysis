@@ -56,6 +56,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "Either one md5/sha1/sha256 hash or several of them in CSV format",
+          "description": "Specify Hash value for which you want to retrieve a summary for given hashes from the Hybrid Analysis server.",
           "placeholder": "d41d8cd98f00b204e9800998ecf8427e,gwerfdc98f00b204e9810998ecf8427e"
         }
       ],
@@ -597,7 +598,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "The URL you want to scan"
+          "tooltip": "The URL you want to scan",
+          "description": "Specify URL that you want to scan in Hybrid Analysis server for analyzes."
         },
         {
           "title": "Do Not Share with Third Party?",
@@ -607,7 +609,8 @@
           "visible": true,
           "type": "checkbox",
           "value": true,
-          "tooltip": "When set to true, the sample is never shared with any third party"
+          "tooltip": "When set to true, the sample is never shared with any third party",
+          "description": "If you select this option, i.e set it to, True, then this sample is not shared with any third-party.By default, this is set to, False."
         },
         {
           "title": "Allow Community Access?",
@@ -617,7 +620,8 @@
           "visible": true,
           "type": "checkbox",
           "value": true,
-          "tooltip": "When set to true, the sample will be available for the community"
+          "tooltip": "If you select this option, i.e set it to,True the sample will be available for the community.By default, this is set to, True. Note: When 'Do Not Share with Third Party?' is set to 'False', it won't be possible to set different value than 'True'",
+          "description": "If you select this option, i.e set it to,True the sample will be available for the community.By default, this is set to, True. Note: When 'Do Not Share with Third Party?' is set to 'False', it won't be possible to set different value than 'True'"
         }
       ],
       "enabled": true,
@@ -668,7 +672,8 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+          "description": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.",
+          "placeholder": "only SHA256"
         },
         {
           "title": "Environment ID",
@@ -780,7 +785,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "placeholder": "e.g. docx"
+          "placeholder": "e.g. docx",
+          "description": "Type of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "File Type Description",
@@ -789,7 +795,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "placeholder": "e.g. PE32 executable"
+          "placeholder": "e.g. PE32 executable",
+          "description": "Description of the file type based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Verdict",
@@ -921,7 +928,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "text"
+          "type": "text",
+          "description": "Authentihash of the file based on which you want to search for a report on the Hybrid Analysis server."
         }
       ],
       "enabled": true,
@@ -977,7 +985,8 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+          "description": "SHA256 value of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.",
+          "placeholder": "only SHA256"
         },
         {
           "title": "Environment ID",
@@ -1018,7 +1027,8 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+          "description": "SHA256 value of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.",
+          "placeholder": "only SHA256"
         },
         {
           "title": "Environment ID",
@@ -1075,7 +1085,8 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file."
+          "description": "SHA256 value of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.",
+          "placeholder": "only SHA256"
         },
         {
           "title": "Environment ID",
@@ -1102,7 +1113,7 @@
       "title": "Get Latest Analysis Reports",
       "category": "investigation",
       "annotation": "get_feed",
-      "description": "Retrieves the last 250 reports of the past 24h",
+      "description": "Retrieves a list of reports from the Hybrid Analysis server, based on the number of days you have specified.",
       "parameters": [],
       "enabled": true,
       "output_schema": {

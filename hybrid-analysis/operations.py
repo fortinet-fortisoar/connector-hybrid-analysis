@@ -13,7 +13,7 @@ from connectors.cyops_utilities.builtins import download_file_from_cyops
 from integrations.crudhub import make_request
 from os.path import join
 
-logger = get_logger('hybrid analysis')
+logger = get_logger('hybrid-analysis')
 
 GET_FEED = '/api/v2/feed/latest'
 GET_REPORT = '/api/v2/report/{ID}/summary'
@@ -92,7 +92,6 @@ def _api_request(method, url, config, payload={}, header=None, file={}, params={
         header = {'api-key': api_key, 'User-Agent': 'Python-Agent'}
         api_response = requests.request(method=method, url=url, headers=header, params=params, data=payload, files=file,
                                         verify=verify_ssl)
-        # logger.debug('REQUESTS_DUMP:\n{}'.format(dump.dump_all(api_response).decode('utf-8')))
         if api_response.ok:
             if json_format == True:
                 return json.loads(api_response.content.decode('utf-8'))

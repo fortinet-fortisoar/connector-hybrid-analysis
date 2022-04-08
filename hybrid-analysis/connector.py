@@ -7,7 +7,7 @@
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import check_health, hybrid_analysis_ops
 
-logger = get_logger('hybrid analysis')
+logger = get_logger('hybrid-analysis')
 
 
 class Hybrid_Analysis(Connector):
