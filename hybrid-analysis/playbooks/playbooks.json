@@ -1,1412 +1,1318 @@
 {
-  "type":"workflow_collections",
-  "data":[
-     {
-        "@type":"WorkflowCollection",
-        "name":"Sample - Hybrid Analysis - 2.0.0",
-        "description":"Sample playbooks for \"Hybrid Analysis\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
-        "visible":true,
-        "image":"/api/3/images/8efa82ce-c9a9-4e28-93dc-124fdf0318dd",
-        "uuid":"516c58ed-2197-4ff8-8fc3-de93483164c0",
-        "id":216,
-        "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-        "createDate":1642581270,
-        "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-        "modifyDate":1642581270,
-        "recordTags":[],
-        "workflows":[
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Environment",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get available sandbox information",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/5477c060-5b5f-4e8e-b938-704b65772969",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"b83ccdc6-f873-4f53-9967-28e1ddd3799f",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"5477c060-5b5f-4e8e-b938-704b65772969",
-                    "id":12451
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Environment",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":[
-                          
-                       ],
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_environment",
-                       "operationTitle":"Get Environment",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"111",
-                    "left":"220",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"d3451f30-03ea-48c4-bc6d-999199bc609d",
-                    "id":12452
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Environment",
-                    "targetStep":"/api/3/workflow_steps/d3451f30-03ea-48c4-bc6d-999199bc609d",
-                    "sourceStep":"/api/3/workflow_steps/5477c060-5b5f-4e8e-b938-704b65772969",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"4cafe585-f2dc-49d2-a6fe-603fdbda6682"
-                 }
-              ],
-              "priority":null,
-              "uuid":"0a1be876-f5eb-40d9-97b3-9967962d5f77",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2412,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"URL Quick Scan",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get quick URL scan",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":1642089889,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/15292cdc-e723-4fa5-a5a3-83aa1119d587",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"180b25a1-aa0f-42f3-a864-0606d7bc1b99",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"15292cdc-e723-4fa5-a5a3-83aa1119d587",
-                    "id":12453
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Submission State",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "url_to_scan":"http://free-paynpal.000webhostapp.com/login.html",
-                          "no_share_third_party":true,
-                          "allow_community_access":true
-                       },
-                       "version":"2.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"url_quick_scan",
-                       "operationTitle":"Quick Scan URL",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"120",
-                    "left":"220",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"b367132a-1e7b-4897-8d10-90da80a5818d",
-                    "id":12454
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Submission State",
-                    "targetStep":"/api/3/workflow_steps/b367132a-1e7b-4897-8d10-90da80a5818d",
-                    "sourceStep":"/api/3/workflow_steps/15292cdc-e723-4fa5-a5a3-83aa1119d587",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"13f2cc96-b5de-4c54-bdc8-65dd92a38440"
-                 }
-              ],
-              "priority":null,
-              "uuid":"0e9a5c8a-4415-483e-b665-b74f3e720c32",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2413,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get API Quota",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get API quota of given user account",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/70910262-e61a-4822-b3d6-57e0151d3b2e",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"0c1188c6-a5f4-40ea-8dbc-a5ecba9c7ea3",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"70910262-e61a-4822-b3d6-57e0151d3b2e",
-                    "id":12455
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get API Quota",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":[
-                          
-                       ],
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_api_quota",
-                       "operationTitle":"Get API Quota",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"140",
-                    "left":"220",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"a0368178-65cf-4fe2-a8b5-c89aef7cc93a",
-                    "id":12456
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get API Quota",
-                    "targetStep":"/api/3/workflow_steps/a0368178-65cf-4fe2-a8b5-c89aef7cc93a",
-                    "sourceStep":"/api/3/workflow_steps/70910262-e61a-4822-b3d6-57e0151d3b2e",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"b0f7dee2-9677-4032-889f-bcc6f2fb81cc"
-                 }
-              ],
-              "priority":null,
-              "uuid":"0f18dfcd-118f-48bd-916d-be194a9f8795",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2414,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Sample Screenshot",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get sample screenshots captured during analysis",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Sample Screenshot",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "job_id":"",
-                          "file_hash":"8562de3fbe076c03d2e25e7774d82a63c24b3dd0e51d29bcd18a602db1f4b889",
-                          "is_attach":false,
-                          "environmentId":100,
-                          "optional_params":""
-                       },
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_sample_screenshots",
-                       "operationTitle":"Get Sample Screenshot",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"197",
-                    "left":"175",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"97e17f4b-d00d-44f0-8830-c4c0c06760ed",
-                    "id":12457
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alert",
-                    "description":null,
-                    "arguments":{
-                       "route":"506ebbfb-7ace-4bd3-a584-f74be1646d28",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
-                    "id":12458
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alert -> Get Sample Screenshot",
-                    "targetStep":"/api/3/workflow_steps/97e17f4b-d00d-44f0-8830-c4c0c06760ed",
-                    "sourceStep":"/api/3/workflow_steps/f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"14487c48-9e7c-4823-9156-a20e5725761c"
-                 }
-              ],
-              "priority":null,
-              "uuid":"14409e81-fb67-4cf5-82d4-aa7cce71203f",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2415,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Submission State",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get state of submitted sample",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/bd14bb15-7285-486f-b250-a7dd15ab69e3",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Submission State",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "job_id":"",
-                          "file_hash":"8562de3fbe076c03d2e25e7774d82a63c24b3dd0e51d29bcd18a602db1f4b889",
-                          "environmentId":100,
-                          "optional_params":""
-                       },
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_submitted_sample_state",
-                       "operationTitle":"Get Submission State",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"120",
-                    "left":"220",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"811d71fb-581f-4159-8f82-1b33bc9f0daf",
-                    "id":12459
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"d3c2014b-1ba0-4171-b1d5-3f23dd68961c",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"bd14bb15-7285-486f-b250-a7dd15ab69e3",
-                    "id":12460
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Submission State",
-                    "targetStep":"/api/3/workflow_steps/811d71fb-581f-4159-8f82-1b33bc9f0daf",
-                    "sourceStep":"/api/3/workflow_steps/bd14bb15-7285-486f-b250-a7dd15ab69e3",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"752e8073-be41-4222-b036-0e34fedf7c11"
-                 }
-              ],
-              "priority":null,
-              "uuid":"3d5d7ab4-5138-4ae9-b68b-fc71a870293c",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2416,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Submit File for Analysis",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Submit file to Hybrid Analysis from CyOPs attachment",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":1642148016,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/d9705400-9fe3-4966-b882-9b7ef9413020",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Submit File",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "email":"",
-                          "comment":"",
-                          "file_id":"{{vars.request.data.records[0].file['@id']}}",
-                          "priority":"",
-                          "properties":"",
-                          "submit_name":"",
-                          "action_script":"",
-                          "environment_id":100,
-                          "no_hash_lookup":false,
-                          "script_logging":false,
-                          "custom_cmd_line":"",
-                          "custom_run_time":"",
-                          "hybrid_analysis":true,
-                          "optional_params":"",
-                          "custom_date_time":"",
-                          "offline_analysis":false,
-                          "document_password":"",
-                          "environment_variable":"",
-                          "no_share_third_party":true,
-                          "tor_enabled_analysis":true,
-                          "input_sample_tampering":false,
-                          "experimental_anti_evasion":false
-                       },
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"submit_file",
-                       "operationTitle":"Submit File",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"114",
-                    "left":"214",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"9c451421-f457-4893-8186-a778c674b6c4",
-                    "id":12461
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Start",
-                    "description":null,
-                    "arguments":{
-                       "route":"68fcea74-f168-47bd-b6ff-7b2634fe06d1",
-                       "resources":[
-                          "attachments"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"d9705400-9fe3-4966-b882-9b7ef9413020",
-                    "id":12462
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Start -> Submit File",
-                    "targetStep":"/api/3/workflow_steps/9c451421-f457-4893-8186-a778c674b6c4",
-                    "sourceStep":"/api/3/workflow_steps/d9705400-9fe3-4966-b882-9b7ef9413020",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"3a96ad78-eeb3-4ba3-8ee0-ee71e96eb660"
-                 }
-              ],
-              "priority":null,
-              "uuid":"6d4bd569-ed90-423e-bdeb-064c856f3650",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2417,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Advanced Search",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Search on Hybrid Analysis database using the search Conditions",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":1642581450,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/f9e7efbb-5d29-4447-aa7a-24083d247c9f",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Advanced Search",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"13997442-37b9-4114-82fa-759dd1b4785c",
-                       "params":{
-                          "tag":"",
-                          "url":"",
-                          "host":"",
-                          "port":"",
-                          "domain":"",
-                          "ssdeep":"",
-                          "context":"",
-                          "verdict":"Suspicious",
-                          "filename":"com.google.android.apps.work.oobconfig.apk",
-                          "filetype":"",
-                          "imp_hash":"",
-                          "av_detect":"",
-                          "vx_family":"",
-                          "similar_to":"",
-                          "authentihash":"",
-                          "filetype_desc":"",
-                          "optional_params":""
-                       },
-                       "version":"2.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"conditional_search",
-                       "operationTitle":"Advance Search",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"128",
-                    "left":"193",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"f4565515-132e-42ff-a183-505c4c8349f6",
-                    "id":12463
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"3b76e632-a47a-462c-9df8-c66683f045f6",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":{
-                          "input":{
-                             "params":[
-                                
-                             ],
-                             "records":"{{vars.input.records}}"
-                          }
-                       },
-                       "displayConditions":{
-                          "alerts":{
-                             "sort":[
-                                
-                             ],
-                             "limit":30,
-                             "logic":"AND",
-                             "filters":[
-                                
-                             ]
-                          }
-                       },
-                       "executeButtonText":"Execute",
-                       "noRecordExecution":true,
-                       "singleRecordExecution":false
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"f9e7efbb-5d29-4447-aa7a-24083d247c9f",
-                    "id":12464
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Advance Search",
-                    "targetStep":"/api/3/workflow_steps/f4565515-132e-42ff-a183-505c4c8349f6",
-                    "sourceStep":"/api/3/workflow_steps/f9e7efbb-5d29-4447-aa7a-24083d247c9f",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"2955f4a5-f281-4b51-90a9-95e3306c003a"
-                 }
-              ],
-              "priority":null,
-              "uuid":"6e543623-8912-445b-a8d8-750d358d7bb7",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2418,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
-              "modifyDate":1642581451,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Files Dropped by Sample",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get file dropped by sample when it is in execution and attach to CyOPs",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/f4039c58-056f-407a-b263-283b39228721",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Files Dropped by Sample",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "job_id":"",
-                          "file_hash":"8562de3fbe076c03d2e25e7774d82a63c24b3dd0e51d29bcd18a602db1f4b889",
-                          "environmentId":100,
-                          "optional_params":""
-                       },
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_sample_dropped_file",
-                       "operationTitle":"Get Files Dropped by Sample",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"140",
-                    "left":"200",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"94563c08-a85f-4b86-bedf-59a1796890db",
-                    "id":12465
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"a878b391-a8d2-4135-9469-ebb096636930",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"f4039c58-056f-407a-b263-283b39228721",
-                    "id":12466
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Files Dropped by Sample",
-                    "targetStep":"/api/3/workflow_steps/94563c08-a85f-4b86-bedf-59a1796890db",
-                    "sourceStep":"/api/3/workflow_steps/f4039c58-056f-407a-b263-283b39228721",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"de652975-3072-4ae3-b988-14edb6dc1268"
-                 }
-              ],
-              "priority":null,
-              "uuid":"96fbd2ac-427a-4535-b9d0-5a831a36ea66",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2419,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Analysis Report for Multile Hachcodes",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Retrieves analysis report details for several hashes",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":1642144837,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/76af5472-e965-4820-a814-3906370171ba",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"71999404-1f6b-442e-aa4e-091f8ebd3bf6",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":{
-                          "input":{
-                             "params":[
-                                
-                             ],
-                             "records":"{{vars.input.records}}"
-                          }
-                       },
-                       "displayConditions":{
-                          "alerts":{
-                             "sort":[
-                                
-                             ],
-                             "limit":30,
-                             "logic":"AND",
-                             "filters":[
-                                
-                             ]
-                          }
-                       },
-                       "executeButtonText":"Execute",
-                       "noRecordExecution":true,
-                       "singleRecordExecution":false
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"76af5472-e965-4820-a814-3906370171ba",
-                    "id":12467
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Analysis Report",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "hashcodes":"c464c43e4697f395376834280b7b16eab7fff2b52fb7fb7cbad934a2dd570f70"
-                       },
-                       "version":"2.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"hashes_search",
-                       "operationTitle":"Get Analysis Report for Multiple Hashcodes",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"120",
-                    "left":"200",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"a709333d-6615-4478-a0ac-d15581aa6e6d",
-                    "id":12468
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Analysis Report",
-                    "targetStep":"/api/3/workflow_steps/a709333d-6615-4478-a0ac-d15581aa6e6d",
-                    "sourceStep":"/api/3/workflow_steps/76af5472-e965-4820-a814-3906370171ba",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"fc21c4c6-d0c2-40c3-bc39-c69b37a6d143"
-                 }
-              ],
-              "priority":null,
-              "uuid":"aa5a7dc8-3164-43c6-823e-066f1dc0cda6",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2420,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Multiple Analysis Reports",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Retrieves all reports in last days",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/a55a8b09-50ea-480b-bd94-4c65b13c994d",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Multiple Analysis Reports",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "days":1
-                       },
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_feed",
-                       "operationTitle":"Get Multiple Analysis Reports",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"140",
-                    "left":"220",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"7d3c4925-78d1-46f2-8677-932f5b90066f",
-                    "id":12469
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"9fc98cc5-1317-4370-9f72-68010dff9509",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"a55a8b09-50ea-480b-bd94-4c65b13c994d",
-                    "id":12470
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Multiple Analysis Reports",
-                    "targetStep":"/api/3/workflow_steps/7d3c4925-78d1-46f2-8677-932f5b90066f",
-                    "sourceStep":"/api/3/workflow_steps/a55a8b09-50ea-480b-bd94-4c65b13c994d",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"e58257f4-9d90-4eaa-8c3f-f48c35de1ee9"
-                 }
-              ],
-              "priority":null,
-              "uuid":"abf74fc6-4d76-4687-9331-4a1cc02bfea4",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2421,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get Analysis Report",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Retrieves analysis report details",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":1642148667,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/2f27c56e-ccc6-4178-9c95-afdae1b77a93",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"bc729e66-db50-4f6b-a925-01ba026be7ce",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"2f27c56e-ccc6-4178-9c95-afdae1b77a93",
-                    "id":12471
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Analysis Report",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "job_id":"61e1327a103f082ea53b11f8",
-                          "file_hash":"",
-                          "environmentId":100,
-                          "optional_params":""
-                       },
-                       "version":"2.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_report",
-                       "operationTitle":"Get Analysis Report",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"129",
-                    "left":"192",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"d3563458-06d5-4dfb-9945-18ea9057c1bb",
-                    "id":12472
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Analysis Report",
-                    "targetStep":"/api/3/workflow_steps/d3563458-06d5-4dfb-9945-18ea9057c1bb",
-                    "sourceStep":"/api/3/workflow_steps/2f27c56e-ccc6-4178-9c95-afdae1b77a93",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"3814e6e1-1936-47e6-a68c-b1bc87e1d090"
-                 }
-              ],
-              "priority":null,
-              "uuid":"bf1cc9fa-7223-433e-94fb-b4bd7ac9dbc7",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2422,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Submit URL for Analysis",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Submit URL for Analysis",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":1642148508,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/3576965c-5550-4410-9ad9-72a14b1d1714",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"9da1b37b-33ca-4675-b362-de775695c7a9",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":{
-                          "input":{
-                             "params":[
-                                
-                             ],
-                             "records":"{{vars.input.records}}"
-                          }
-                       },
-                       "displayConditions":{
-                          "alerts":{
-                             "sort":[
-                                
-                             ],
-                             "limit":30,
-                             "logic":"AND",
-                             "filters":[
-                                
-                             ]
-                          }
-                       },
-                       "executeButtonText":"Execute",
-                       "noRecordExecution":true,
-                       "singleRecordExecution":false
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"3576965c-5550-4410-9ad9-72a14b1d1714",
-                    "id":12473
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get Analysis Report",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":{
-                          "url":"https://etisalatbuyback.com/expectant.php",
-                          "email":"",
-                          "comment":"",
-                          "priority":1,
-                          "action_script":"",
-                          "environment_id":300,
-                          "no_hash_lookup":false,
-                          "script_logging":false,
-                          "custom_run_time":"",
-                          "hybrid_analysis":true,
-                          "custom_date_time":"",
-                          "environment_variable":"",
-                          "no_share_third_party":false,
-                          "tor_enabled_analysis":true,
-                          "input_sample_tampering":false,
-                          "experimental_anti_evasion":false
-                       },
-                       "version":"2.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"submit_url",
-                       "operationTitle":"Submit URL",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"129",
-                    "left":"192",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"40f89bfe-0144-4c56-a9cf-ca7d997dade6",
-                    "id":12474
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get Analysis Report",
-                    "targetStep":"/api/3/workflow_steps/40f89bfe-0144-4c56-a9cf-ca7d997dade6",
-                    "sourceStep":"/api/3/workflow_steps/3576965c-5550-4410-9ad9-72a14b1d1714",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"fdba6be4-4558-4321-97e9-ad6993936582"
-                 }
-              ],
-              "priority":null,
-              "uuid":"ea07515d-5d31-4b2f-a460-bc20d2e4e066",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2423,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           },
-           {
-              "@type":"Workflow",
-              "triggerLimit":null,
-              "name":"Get API Limit",
-              "aliasName":null,
-              "tag":"#HybridAnalysis",
-              "description":"Get API limit of given user account",
-              "isActive":false,
-              "debug":false,
-              "singleRecordExecution":false,
-              "remoteExecutableFlag":false,
-              "parameters":[
-                 
-              ],
-              "synchronous":false,
-              "lastModifyDate":null,
-              "collection":"/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
-              "versions":[
-                 
-              ],
-              "triggerStep":"/api/3/workflow_steps/36660e1e-54ab-4b0a-b15c-98057e223eb6",
-              "steps":[
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Alerts",
-                    "description":null,
-                    "arguments":{
-                       "route":"f80153b4-c4ff-446b-9283-9dc3c127386e",
-                       "resources":[
-                          "alerts"
-                       ],
-                       "inputVariables":[
-                          
-                       ],
-                       "step_variables":[
-                          
-                       ]
-                    },
-                    "status":null,
-                    "top":"20",
-                    "left":"20",
-                    "stepType":"/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
-                    "uuid":"36660e1e-54ab-4b0a-b15c-98057e223eb6",
-                    "id":12475
-                 },
-                 {
-                    "@type":"WorkflowStep",
-                    "name":"Get API Limit",
-                    "description":null,
-                    "arguments":{
-                       "name":"Hybrid Analysis",
-                       "config":"1c9c5956-3504-4b86-a761-c864f1384965",
-                       "params":[
-                          
-                       ],
-                       "version":"1.0.0",
-                       "connector":"hybrid-analysis",
-                       "operation":"get_api_limits",
-                       "operationTitle":"Get API Limit",
-                       "step_variables":{
-                          "output_data":"{{vars.result}}"
-                       }
-                    },
-                    "status":null,
-                    "top":"120",
-                    "left":"200",
-                    "stepType":"/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
-                    "uuid":"e559b0ce-0783-41d2-bbbd-77252f8dd5fa",
-                    "id":12476
-                 }
-              ],
-              "routes":[
-                 {
-                    "@type":"WorkflowRoute",
-                    "name":"Alerts -> Get API Limit",
-                    "targetStep":"/api/3/workflow_steps/e559b0ce-0783-41d2-bbbd-77252f8dd5fa",
-                    "sourceStep":"/api/3/workflow_steps/36660e1e-54ab-4b0a-b15c-98057e223eb6",
-                    "label":null,
-                    "isExecuted":false,
-                    "uuid":"7366f171-e4fa-4ad4-9a05-e5f591735e31"
-                 }
-              ],
-              "priority":null,
-              "uuid":"f6c23c40-3a00-4453-a59b-d5247495bec0",
-              "recordTags":[
-                 "Hybrid-Analysis"
-              ],
-              "id":2424,
-              "createUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "createDate":1642581270,
-              "modifyUser":"/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
-              "modifyDate":1642581270,
-              "owners":[
-                 
-              ],
-              "isPrivate":false
-           }
-        ]
-     }
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@type": "WorkflowCollection",
+      "name": "Sample - Hybrid Analysis - 2.0.0",
+      "description": "Sample playbooks for \"Hybrid Analysis\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": "/api/3/images/898f2268-c2f9-4f9a-bdda-991166bf14a1",
+      "uuid": "516c58ed-2197-4ff8-8fc3-de93483164c0",
+      "id": 1400,
+      "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "createDate": 1649312169,
+      "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+      "modifyDate": 1649312169,
+      "recordTags": [],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Environment",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Get available sandbox information",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248344,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5477c060-5b5f-4e8e-b938-704b65772969",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b83ccdc6-f873-4f53-9967-28e1ddd3799f",
+                "title": "Hybrid Analysis: Get Environment",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "5477c060-5b5f-4e8e-b938-704b65772969",
+              "id": 36072
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Environment",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": [],
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_environment",
+                "operationTitle": "Get Environment",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "d3451f30-03ea-48c4-bc6d-999199bc609d",
+              "id": 36073
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Environment",
+              "targetStep": "/api/3/workflow_steps/d3451f30-03ea-48c4-bc6d-999199bc609d",
+              "sourceStep": "/api/3/workflow_steps/5477c060-5b5f-4e8e-b938-704b65772969",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4cafe585-f2dc-49d2-a6fe-603fdbda6682"
+            }
+          ],
+          "priority": null,
+          "uuid": "0a1be876-f5eb-40d9-97b3-9967962d5f77",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13176,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Quick Scan URL",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Get quick URL scan",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649249266,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/15292cdc-e723-4fa5-a5a3-83aa1119d587",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "180b25a1-aa0f-42f3-a864-0606d7bc1b99",
+                "title": "Hybrid Analysis: Quick Scan URL",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "15292cdc-e723-4fa5-a5a3-83aa1119d587",
+              "id": 36074
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Quick Scan URL",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "url_to_scan": "http://free-paynpal.000webhostapp.com/login.html",
+                  "no_share_third_party": true,
+                  "allow_community_access": true
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "url_quick_scan",
+                "operationTitle": "Quick Scan URL",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "b367132a-1e7b-4897-8d10-90da80a5818d",
+              "id": 36075
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Submission State",
+              "targetStep": "/api/3/workflow_steps/b367132a-1e7b-4897-8d10-90da80a5818d",
+              "sourceStep": "/api/3/workflow_steps/15292cdc-e723-4fa5-a5a3-83aa1119d587",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "13f2cc96-b5de-4c54-bdc8-65dd92a38440"
+            }
+          ],
+          "priority": null,
+          "uuid": "0e9a5c8a-4415-483e-b665-b74f3e720c32",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13177,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get API Quota",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Get API quota of given user account",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248300,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/70910262-e61a-4822-b3d6-57e0151d3b2e",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0c1188c6-a5f4-40ea-8dbc-a5ecba9c7ea3",
+                "title": "Hybrid Analysis: Get API Quota",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "70910262-e61a-4822-b3d6-57e0151d3b2e",
+              "id": 36076
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get API Quota",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": [],
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_api_quota",
+                "operationTitle": "Get API Quota",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "a0368178-65cf-4fe2-a8b5-c89aef7cc93a",
+              "id": 36077
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get API Quota",
+              "targetStep": "/api/3/workflow_steps/a0368178-65cf-4fe2-a8b5-c89aef7cc93a",
+              "sourceStep": "/api/3/workflow_steps/70910262-e61a-4822-b3d6-57e0151d3b2e",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "b0f7dee2-9677-4032-889f-bcc6f2fb81cc"
+            }
+          ],
+          "priority": null,
+          "uuid": "0f18dfcd-118f-48bd-916d-be194a9f8795",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13178,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Sample Screenshot",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Get sample screenshots captured during analysis",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248839,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Sample Screenshot",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "job_id": "624d77da310155175522f292",
+                  "file_hash": "",
+                  "is_attach": false,
+                  "environmentId": "",
+                  "optional_params": ""
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_sample_screenshots",
+                "operationTitle": "Get Sample Screenshot",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "97e17f4b-d00d-44f0-8830-c4c0c06760ed",
+              "id": 36078
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "506ebbfb-7ace-4bd3-a584-f74be1646d28",
+                "title": "Hybrid Analysis: Get Sample Screenshot",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
+              "id": 36079
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alert -> Get Sample Screenshot",
+              "targetStep": "/api/3/workflow_steps/97e17f4b-d00d-44f0-8830-c4c0c06760ed",
+              "sourceStep": "/api/3/workflow_steps/f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "14487c48-9e7c-4823-9156-a20e5725761c"
+            }
+          ],
+          "priority": null,
+          "uuid": "14409e81-fb67-4cf5-82d4-aa7cce71203f",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13179,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Submission State",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Get state of submitted sample",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248770,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/bd14bb15-7285-486f-b250-a7dd15ab69e3",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Submission State",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "job_id": "624d77da310155175522f292",
+                  "file_hash": "",
+                  "environmentId": "",
+                  "optional_params": ""
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_submitted_sample_state",
+                "operationTitle": "Get Submission State",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "811d71fb-581f-4159-8f82-1b33bc9f0daf",
+              "id": 36080
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d3c2014b-1ba0-4171-b1d5-3f23dd68961c",
+                "title": "Hybrid Analysis: Get Submission State",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "bd14bb15-7285-486f-b250-a7dd15ab69e3",
+              "id": 36081
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Submission State",
+              "targetStep": "/api/3/workflow_steps/811d71fb-581f-4159-8f82-1b33bc9f0daf",
+              "sourceStep": "/api/3/workflow_steps/bd14bb15-7285-486f-b250-a7dd15ab69e3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "752e8073-be41-4222-b036-0e34fedf7c11"
+            }
+          ],
+          "priority": null,
+          "uuid": "3d5d7ab4-5138-4ae9-b68b-fc71a870293c",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13180,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Submit File",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Submit file to Hybrid Analysis from FortiSOAR attachment",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649312252,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d9705400-9fe3-4966-b882-9b7ef9413020",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "68fcea74-f168-47bd-b6ff-7b2634fe06d1",
+                "title": "Hybrid Analysis: Submit File",
+                "resources": [
+                  "attachments"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "attachments": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "d9705400-9fe3-4966-b882-9b7ef9413020",
+              "id": 36082
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Submit File",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "email": "",
+                  "value": "{{vars.input.records[0]['@id']}}",
+                  "comment": "",
+                  "file_id": "{{vars.input.records[0]['@id']}}",
+                  "priority": "",
+                  "properties": "",
+                  "submit_name": "",
+                  "action_script": "",
+                  "environment_id": 300,
+                  "no_hash_lookup": false,
+                  "script_logging": false,
+                  "custom_cmd_line": "",
+                  "custom_run_time": "",
+                  "hybrid_analysis": true,
+                  "custom_date_time": "",
+                  "offline_analysis": false,
+                  "document_password": "",
+                  "environment_variable": "",
+                  "no_share_third_party": true,
+                  "tor_enabled_analysis": true,
+                  "input_sample_tampering": false,
+                  "experimental_anti_evasion": false
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "submit_file",
+                "operationTitle": "Submit File",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "32679b3f-cb1e-42c4-9f9f-7214006b1350",
+              "id": 36083
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Submit File",
+              "targetStep": "/api/3/workflow_steps/32679b3f-cb1e-42c4-9f9f-7214006b1350",
+              "sourceStep": "/api/3/workflow_steps/d9705400-9fe3-4966-b882-9b7ef9413020",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1370451b-518c-4ad0-8be1-970e708a67e6"
+            }
+          ],
+          "priority": null,
+          "uuid": "6d4bd569-ed90-423e-bdeb-064c856f3650",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13181,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/people/3451141c-bac6-467c-8d72-85e0fab569ce",
+          "modifyDate": 1649312423,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Advanced Search",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Search on Hybrid Analysis database using the search Conditions",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649247944,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f9e7efbb-5d29-4447-aa7a-24083d247c9f",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Advanced Search",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "tag": "",
+                  "url": "",
+                  "host": "",
+                  "port": "",
+                  "domain": "",
+                  "ssdeep": "",
+                  "context": "",
+                  "verdict": "Suspicious",
+                  "filename": "com.google.android.apps.work.oobconfig.apk",
+                  "filetype": "",
+                  "imp_hash": "",
+                  "av_detect": "",
+                  "vx_family": "",
+                  "similar_to": "",
+                  "authentihash": "",
+                  "filetype_desc": "",
+                  "optional_params": ""
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "conditional_search",
+                "operationTitle": "Advance Search",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "f4565515-132e-42ff-a183-505c4c8349f6",
+              "id": 36084
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "3b76e632-a47a-462c-9df8-c66683f045f6",
+                "title": "Hybrid Analysis: Advanced Search",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f9e7efbb-5d29-4447-aa7a-24083d247c9f",
+              "id": 36085
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Advance Search",
+              "targetStep": "/api/3/workflow_steps/f4565515-132e-42ff-a183-505c4c8349f6",
+              "sourceStep": "/api/3/workflow_steps/f9e7efbb-5d29-4447-aa7a-24083d247c9f",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "2955f4a5-f281-4b51-90a9-95e3306c003a"
+            }
+          ],
+          "priority": null,
+          "uuid": "6e543623-8912-445b-a8d8-750d358d7bb7",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13182,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Files Dropped by Sample",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Get file dropped by sample when it is in execution and attach to CyOPs",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649249360,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f4039c58-056f-407a-b263-283b39228721",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Files Dropped by Sample",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "job_id": "",
+                  "file_hash": "8562de3fbe076c03d2e25e7774d82a63c24b3dd0e51d29bcd18a602db1f4b889",
+                  "environmentId": 100,
+                  "optional_params": ""
+                },
+                "version": "1.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_sample_dropped_file",
+                "operationTitle": "Get Files Dropped by Sample",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "94563c08-a85f-4b86-bedf-59a1796890db",
+              "id": 36086
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "a878b391-a8d2-4135-9469-ebb096636930",
+                "title": "Hybrid Analysis: Get Files Dropped by Sample",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "f4039c58-056f-407a-b263-283b39228721",
+              "id": 36087
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Files Dropped by Sample",
+              "targetStep": "/api/3/workflow_steps/94563c08-a85f-4b86-bedf-59a1796890db",
+              "sourceStep": "/api/3/workflow_steps/f4039c58-056f-407a-b263-283b39228721",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "de652975-3072-4ae3-b988-14edb6dc1268"
+            }
+          ],
+          "priority": null,
+          "uuid": "96fbd2ac-427a-4535-b9d0-5a831a36ea66",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13183,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Analysis Report for Multiple Hashcodes",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Retrieves analysis report details for several hashes",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248651,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/76af5472-e965-4820-a814-3906370171ba",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "71999404-1f6b-442e-aa4e-091f8ebd3bf6",
+                "title": "Hybrid Analysis: Get Analysis Report for Multiple Hashcodes",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "76af5472-e965-4820-a814-3906370171ba",
+              "id": 36088
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Analysis Report for Multiple Hashcodes",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "hashcodes": "c464c43e4697f395376834280b7b16eab7fff2b52fb7fb7cbad934a2dd570f70"
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "hashes_search",
+                "operationTitle": "Get Analysis Report for Multiple Hashcodes",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "a709333d-6615-4478-a0ac-d15581aa6e6d",
+              "id": 36089
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Analysis Report",
+              "targetStep": "/api/3/workflow_steps/a709333d-6615-4478-a0ac-d15581aa6e6d",
+              "sourceStep": "/api/3/workflow_steps/76af5472-e965-4820-a814-3906370171ba",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "fc21c4c6-d0c2-40c3-bc39-c69b37a6d143"
+            }
+          ],
+          "priority": null,
+          "uuid": "aa5a7dc8-3164-43c6-823e-066f1dc0cda6",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13184,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Latest Analysis Reports",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Retrieves all reports in last days",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248626,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/a55a8b09-50ea-480b-bd94-4c65b13c994d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Latest Analysis Reports",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": [],
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_feed",
+                "operationTitle": "Get Multiple Analysis Reports",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "7d3c4925-78d1-46f2-8677-932f5b90066f",
+              "id": 36090
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9fc98cc5-1317-4370-9f72-68010dff9509",
+                "title": "Hybrid Analysis: Get Latest Analysis Reports",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "a55a8b09-50ea-480b-bd94-4c65b13c994d",
+              "id": 36091
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Multiple Analysis Reports",
+              "targetStep": "/api/3/workflow_steps/7d3c4925-78d1-46f2-8677-932f5b90066f",
+              "sourceStep": "/api/3/workflow_steps/a55a8b09-50ea-480b-bd94-4c65b13c994d",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "e58257f4-9d90-4eaa-8c3f-f48c35de1ee9"
+            }
+          ],
+          "priority": null,
+          "uuid": "abf74fc6-4d76-4687-9331-4a1cc02bfea4",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13185,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Analysis Report",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Retrieves analysis report details",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248150,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/2f27c56e-ccc6-4178-9c95-afdae1b77a93",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "bc729e66-db50-4f6b-a925-01ba026be7ce",
+                "title": "Hybrid Analysis: Get Analysis Report",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "2f27c56e-ccc6-4178-9c95-afdae1b77a93",
+              "id": 36092
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Analysis Report",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "job_id": "624d77da310155175522f292",
+                  "file_hash": "",
+                  "environmentId": ""
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "get_report",
+                "operationTitle": "Get Analysis Report",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "03515f22-b218-419d-949c-e5d58a29aa8d",
+              "id": 36093
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Get Analysis Report",
+              "targetStep": "/api/3/workflow_steps/03515f22-b218-419d-949c-e5d58a29aa8d",
+              "sourceStep": "/api/3/workflow_steps/2f27c56e-ccc6-4178-9c95-afdae1b77a93",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "58365936-af7a-4f1a-a9e5-3cf9ffcb53e3"
+            }
+          ],
+          "priority": null,
+          "uuid": "bf1cc9fa-7223-433e-94fb-b4bd7ac9dbc7",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13186,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Submit URL",
+          "aliasName": null,
+          "tag": "#HybridAnalysis",
+          "description": "Submit URL for Analysis",
+          "isActive": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1649248914,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/3576965c-5550-4410-9ad9-72a14b1d1714",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "9da1b37b-33ca-4675-b362-de775695c7a9",
+                "title": "Hybrid Analysis: Submit URL",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "displayConditions": {
+                  "alerts": {
+                    "sort": [],
+                    "limit": 30,
+                    "logic": "AND",
+                    "filters": []
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "uuid": "3576965c-5550-4410-9ad9-72a14b1d1714",
+              "id": 36094
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Submit URL",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "",
+                "params": {
+                  "url": "https://etisalatbuyback.com/expectant.php",
+                  "email": "",
+                  "comment": "",
+                  "priority": 1,
+                  "action_script": "",
+                  "environment_id": 300,
+                  "no_hash_lookup": false,
+                  "script_logging": false,
+                  "custom_run_time": "",
+                  "hybrid_analysis": true,
+                  "custom_date_time": "",
+                  "environment_variable": "",
+                  "no_share_third_party": false,
+                  "tor_enabled_analysis": true,
+                  "input_sample_tampering": false,
+                  "experimental_anti_evasion": false
+                },
+                "version": "2.0.0",
+                "connector": "hybrid-analysis",
+                "operation": "submit_url",
+                "operationTitle": "Submit URL",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "uuid": "40f89bfe-0144-4c56-a9cf-ca7d997dade6",
+              "id": 36095
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Alerts -> Get Analysis Report",
+              "targetStep": "/api/3/workflow_steps/40f89bfe-0144-4c56-a9cf-ca7d997dade6",
+              "sourceStep": "/api/3/workflow_steps/3576965c-5550-4410-9ad9-72a14b1d1714",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "fdba6be4-4558-4321-97e9-ad6993936582"
+            }
+          ],
+          "priority": null,
+          "uuid": "ea07515d-5d31-4b2f-a460-bc20d2e4e066",
+          "recordTags": [
+            "Hybrid-Analysis"
+          ],
+          "id": 13187,
+          "createUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "createDate": 1649312169,
+          "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
+          "modifyDate": 1649312169,
+          "owners": [],
+          "isPrivate": false
+        }
+      ]
+    }
   ],
-  "exported_tags":[
-     "Hybrid-Analysis"
+  "exported_tags": [
+    "Hybrid-Analysis"
   ]
 }
