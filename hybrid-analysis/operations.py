@@ -1,8 +1,9 @@
-""" Copyright start
-  Copyright (C) 2008 - 2022 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
-  Copyright end """
+"""
+Copyright start
+MIT License
+Copyright (c) 2024 Fortinet Inc
+Copyright end
+"""
 
 import ast, io, json, requests
 from connectors.core.connector import get_logger, ConnectorError
@@ -315,7 +316,9 @@ def handle_params(params):
     try:
         if isinstance(value, bytes):
             value = value.decode('utf-8')
-        if not value.startswith('/api/3/attachments/'):
+        if value.startswith('/api/3/files/'):
+            return value, None
+        if not value.startswith('/api/3/attachments/') and not value.startswith('/api/3/indicators/'):
             value = '/api/3/attachments/{0}'.format(value)
         attachment_data = make_request(value, 'GET')
         file_iri = attachment_data['file']['@id']

@@ -1,12 +1,7 @@
 #### What's Improved
 
-- Updated "File ID" parameter with "Attachment ID" for "Submit File" operation.
-- Added following new operations and playbooks
-  - Get Analysis Report for Multiple Hashcodes
-  - Submit URL
-  - Quick Scan URL
+- Updated "Attachment ID" parameter with "Attachment/Indicator ID" for "Submit File" operation.
 
 #### What's Fixed 
 
-- Removed "Get API Limit" operation from connector.
-- Updated the Output Schema for all the operations.
+- "Submit File" operation should be also work for Indicator module.
