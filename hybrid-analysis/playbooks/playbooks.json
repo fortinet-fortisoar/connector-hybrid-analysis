@@ -3,7 +3,7 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Hybrid Analysis - 2.0.0",
+      "name": "Sample - Hybrid Analysis - 2.0.1",
       "description": "Sample playbooks for \"Hybrid Analysis\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": "/api/3/images/898f2268-c2f9-4f9a-bdda-991166bf14a1",
@@ -76,7 +76,7 @@
                 "name": "Hybrid Analysis",
                 "config": "",
                 "params": [],
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "get_environment",
                 "operationTitle": "Get Environment",
@@ -181,7 +181,7 @@
                   "no_share_third_party": true,
                   "allow_community_access": true
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "url_quick_scan",
                 "operationTitle": "Quick Scan URL",
@@ -282,7 +282,7 @@
                 "name": "Hybrid Analysis",
                 "config": "",
                 "params": [],
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "get_api_quota",
                 "operationTitle": "Get API Quota",
@@ -353,7 +353,7 @@
                   "environmentId": "",
                   "optional_params": ""
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "get_sample_screenshots",
                 "operationTitle": "Get Sample Screenshot",
@@ -459,7 +459,7 @@
                   "environmentId": "",
                   "optional_params": ""
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "get_submitted_sample_state",
                 "operationTitle": "Get Submission State",
@@ -619,7 +619,7 @@
                   "input_sample_tampering": false,
                   "experimental_anti_evasion": false
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "submit_file",
                 "operationTitle": "Submit File",
@@ -701,7 +701,7 @@
                   "filetype_desc": "",
                   "optional_params": ""
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "conditional_search",
                 "operationTitle": "Advance Search",
@@ -946,7 +946,7 @@
                 "params": {
                   "hashcodes": "c464c43e4697f395376834280b7b16eab7fff2b52fb7fb7cbad934a2dd570f70"
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "hashes_search",
                 "operationTitle": "Get Analysis Report for Multiple Hashcodes",
@@ -1011,7 +1011,7 @@
                 "name": "Hybrid Analysis",
                 "config": "",
                 "params": [],
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "get_feed",
                 "operationTitle": "Get Multiple Analysis Reports",
@@ -1152,7 +1152,7 @@
                   "file_hash": "",
                   "environmentId": ""
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "get_report",
                 "operationTitle": "Get Analysis Report",
@@ -1269,7 +1269,7 @@
                   "input_sample_tampering": false,
                   "experimental_anti_evasion": false
                 },
-                "version": "2.0.0",
+                "version": "2.0.1",
                 "connector": "hybrid-analysis",
                 "operation": "submit_url",
                 "operationTitle": "Submit URL",

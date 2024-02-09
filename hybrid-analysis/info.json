@@ -1,6 +1,6 @@
 {
   "name": "hybrid-analysis",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "label": "Hybrid Analysis",
   "description": "Hybrid Analysis provides malware analysis service. This connector facilitates automated operations such as get report, environment, submit file, submit URL, etc.",
   "publisher": "Community",
@@ -142,16 +142,16 @@
       "title": "Submit File",
       "category": "investigation",
       "annotation": "detonate_file",
-      "description": "Submits a file from the FortiSOAR™ Attachments module to the Hybrid Analysis server for analysis.",
+      "description": "Submits a file from the FortiSOAR™ Attachments/Indicators module to the Hybrid Analysis server for analysis.",
       "parameters": [
         {
-          "title": "Attachment ID",
+          "title": "Attachment/Indicator ID",
           "name": "value",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' module of FortiSOAR™.\nIn the playbook, the value of the attachment ID field defaults to {{vars.attachment_id}}."
+          "description": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' or 'Indicators' module of FortiSOAR™."
         },
         {
           "title": "Environment ID",
@@ -1262,5 +1262,5 @@
   "icon_medium_name": "",
   "cs_approved": false,
   "cs_compatible": true,
-  "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.0/hybrid-analysis/252/hybrid-analysis-v2-0-0"
+  "help_online": ""
 }
