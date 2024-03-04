@@ -602,7 +602,7 @@
           "tooltip": "Submission Name field that will be used for file type detection and analysis",
           "placeholder": "My Sample",
           "description": "(Optional) The name of the submitted file. The Submission Name field is used for file type detection and analysis."
-        },
+        }
       ],
       "enabled": true,
       "output_schema": {
