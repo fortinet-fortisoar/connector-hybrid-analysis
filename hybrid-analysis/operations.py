@@ -13,6 +13,7 @@ from integrations.crudhub import maybe_json_or_raise
 from connectors.cyops_utilities.builtins import download_file_from_cyops
 from integrations.crudhub import make_request
 from os.path import join
+from datetime import datetime
 
 logger = get_logger('hybrid-analysis')
 
@@ -29,6 +30,15 @@ SEARCH = '/api/v2/search/terms'
 SUBMISSION_STATE = '/api/v2/report/{ID}/state'
 URL_QUICK_SCAN = '/api/v2/quick-scan/url'
 SUBMIT_URL = '/api/v2/submit/url'
+
+ACTION_SCRIPT = {
+    "Default": "default",
+    "Default Maxium Antievasion": "default_maxantievasion",
+    "Default Random Files": "default_randomfiles",
+    "Default Random Theme": "default_randomtheme",
+    "Default Openie": "default_openie"
+}
+
 
 
 def str_to_list(input_str):
@@ -161,6 +171,12 @@ def _get_url_from_job_id_or_file_hash(params, api):
         raise ConnectorError(Err)
 
 
+def _convert_datetime(date_time):
+    datetime_obj = datetime.fromisoformat(date_time[:-1])
+    formatted_datetime = datetime_obj.strftime("%Y-%m-%d %H:%M")
+    return formatted_datetime
+
+
 def check_health(config):
     try:
         if _api_request("get", KEY_LIMITS, config):
@@ -257,8 +273,30 @@ def get_submitted_sample_state(config, params):
 
 def conditional_search(config, params):
     try:
+        filename = params.get('filename')
+        if filename:
+            params.update({'filename': str(filename)})
+        av_detect = params.get('av_detect')
+        if av_detect:
+            params.update({'av_detect': str(av_detect)})
+        vx_family = params.get(vx_family)
+        if vx_family:
+            params.update({'vx_family': str(vx_family)})
+        tag = params.get('tag'):
+        if tag:
+            params.update({'tag': str(tag)})
+        ssdeep = params.get('ssdeep')
+        if ssdeep:
+            params.update({'ssdeep': str(ssdeep)})
+        date_from = params.get('date_from')
+        if date_from:
+            params.update({'date_from': _convert_datetime(date_from)})
+        date_to = params.get('date_to')
+        if date_to:
+            params.update({'date_to': _convert_datetime(date_to)})
         verdict_value = ["Whitelisted", "No Verdict", "No Specific Threat", "Suspicious", "Malicious"]
         search_params = [{"field_name": "filename", "field_type": str},
+                         {"field_name": "env_id", "field_type": str},
                          {"field_name": "filetype", "field_type": str},
                          {"field_name": "filetype_desc", "field_type": str},
                          {"field_name": "verdict", "field_type": str},
@@ -272,12 +310,18 @@ def conditional_search(config, params):
                          {"field_name": "similar_to", "field_type": str},
                          {"field_name": "context", "field_type": str},
                          {"field_name": "imp_hash", "field_type": str},
+                         {"field_name": "date_from", "field_type": str},
+                         {"field_name": "date_to", "field_type": str},
                          {"field_name": "ssdeep", "field_type": str},
-                         {"field_name": "authentihash", "field_type": str}]
+                         {"field_name": "authentihash", "field_type": str},
+                         {"field_name": "uses_tactic", "field_type": str},
+                         {"field_name": "uses_technique", "field_type": str},]
         search_params_values = _get_params_in_bulk(params, search_params)
         search_params_values.update(
             {"verdict": int(verdict_value.index(search_params_values.get("verdict"))) + 1}) if search_params_values.get(
             "verdict") else None
+        if search_params_values == {}:
+            search_params_values.update({'port': ''})
         return _api_request("post", SEARCH, config, payload=search_params_values)
     except Exception as Err:
         logger.exception("Fail : {}".format(str(Err)))
@@ -289,10 +333,10 @@ def url_quick_scan(config, params):
         url_quick_scan_payload = {
             'scan_type': 'all',
             'url': _get_input(params, "url_to_scan", str),
-            'no_share_third_party': params.get('no_share_third_party') if params.get(
-                'no_share_third_party') is not None else True,
-            'allow_community_access': params.get('allow_community_access') if params.get(
-                'allow_community_access') is not None else True,
+            'comment': str(params.get('comment')) if params.get(
+                'comment') is not None else '',
+            'submit_name': str(params.get('submit_name')) if params.get(
+                'submit_name') is not None else '',
         }
 
         return _api_request("post", URL_QUICK_SCAN, config, payload=url_quick_scan_payload)
@@ -334,16 +378,30 @@ def handle_params(params):
 
 def submit_file(config, params):
     try:
+        comment = params.get('comment')
+        if comment:
+            params.update({'comment': str(comment)})
+        action_script = params.get('action_script')
+        if action_script:
+            params.update({'action_script': ACTION_SCRIPT.get(action_script)})
+        network_settings = params.get('network_settings')
+        if network_settings:
+            params.update({'network_settings': network_settings.lower()})
+        custom_date_time = params.get('custom_date_time')
+        if custom_date_time:
+            params.update({'custom_date_time': _convert_datetime(custom_date_time)})
+        custom_cmd_line = params.get('custom_cmd_line')
+        if custom_cmd_line:
+            params.update({'custom_cmd_line': str(custom_cmd_line)})
+        submit_name = params.get('submit_name')
+        if submit_name:
+            params.update({'submit_name': str(submit_name)})
         submit_file_params = [{"field_name": "environment_id", "field_type": int},
-                              {"field_name": "no_share_third_party", "field_type": bool},
-                              {"field_name": "no_hash_lookup", "field_type": bool},
                               {"field_name": "action_script", "field_type": str},
                               {"field_name": "hybrid_analysis", "field_type": bool},
                               {"field_name": "experimental_anti_evasion", "field_type": bool},
                               {"field_name": "script_logging", "field_type": bool},
                               {"field_name": "input_sample_tampering", "field_type": bool},
-                              {"field_name": "tor_enabled_analysis", "field_type": bool},
-                              {"field_name": "offline_analysis", "field_type": bool},
                               {"field_name": "email", "field_type": str},
                               {"field_name": "properties", "field_type": str},
                               {"field_name": "comment", "field_type": str},
@@ -371,22 +429,40 @@ def submit_file(config, params):
 
 def submit_url(config, params):
     try:
+        comment = params.get('comment')
+        if comment:
+            params.update({'comment': str(comment)})
+        action_script = params.get('action_script')
+        if action_script:
+            params.update({'action_script': ACTION_SCRIPT.get(action_script)})
+        network_settings = params.get('network_settings')
+        if network_settings:
+            params.update({'network_settings': network_settings.lower()})
+        custom_date_time = params.get('custom_date_time')
+        if custom_date_time:
+            params.update({'custom_date_time': _convert_datetime(custom_date_time)})
+        custom_cmd_line = params.get('custom_cmd_line')
+        if custom_cmd_line:
+            params.update({'custom_cmd_line': str(custom_cmd_line)})
+        submit_name = params.get('submit_name')
+        if submit_name:
+            params.update({'submit_name': str(submit_name)})
         submit_url_params = [{"field_name": "url", "field_type": str},
                              {"field_name": "environment_id", "field_type": int},
-                             {"field_name": "no_share_third_party", "field_type": bool},
-                             {"field_name": "no_hash_lookup", "field_type": bool},
                              {"field_name": "priority", "field_type": int},
                              {"field_name": "action_script", "field_type": str},
                              {"field_name": "hybrid_analysis", "field_type": bool},
                              {"field_name": "experimental_anti_evasion", "field_type": bool},
                              {"field_name": "script_logging", "field_type": bool},
                              {"field_name": "input_sample_tampering", "field_type": bool},
-                             {"field_name": "tor_enabled_analysis", "field_type": bool},
+                             {"field_name": "network_settings", "field_type": str},
                              {"field_name": "email", "field_type": str},
-                             {"field_name": "properties", "field_type": str},
                              {"field_name": "comment", "field_type": str},
+                             {"field_name": "submit_name", "field_type": str},
                              {"field_name": "custom_date_time", "field_type": str},
+                             {"field_name": "custom_cmd_line", "field_type": str},
                              {"field_name": "custom_run_time", "field_type": int},
+                             {"field_name": "document_password", "field_type": str},
                              {"field_name": "environment_variable", "field_type": str}
                              ]
         submit_url_params_values = _get_params_in_bulk(params, submit_url_params)
