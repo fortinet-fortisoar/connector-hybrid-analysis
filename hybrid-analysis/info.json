@@ -2,8 +2,8 @@
   "name": "hybrid-analysis",
   "version": "2.0.1",
   "label": "Hybrid Analysis",
-  "description": "Hybrid Analysis provides malware analysis service. This connector facilitates automated operations such as get report, environment, submit file, submit URL, etc.",
-  "publisher": "Community",
+  "description": "Hybrid Analysis provides a malware analysis service that allows users to automate the analysis of files and URLs for potential threats. This connector facilitates automated operations such as retrieving analysis reports, environment details, submitting files, submitting URLs, etc.",
+  "publisher": "Fortinet",
   "icon_small_name": "Hybrid_Analysis_small.png",
   "icon_large_name": "Hybrid_Analysis_medium.png",
   "category": "Malware Analysis",
@@ -17,7 +17,8 @@
         "type": "text",
         "name": "server_url",
         "value": "https://www.hybrid-analysis.com",
-        "description": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations."
+        "description": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations.",
+        "tooltip": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations."
       },
       {
         "title": "API Key",
@@ -26,7 +27,8 @@
         "visible": true,
         "type": "password",
         "name": "api_key",
-        "description": "API key that is configured for your account to access the Hybrid Analysis endpoint."
+        "description": "API key that is configured for your account to access the Hybrid Analysis endpoint.",
+        "tooltip": "API key that is configured for your account to access the Hybrid Analysis endpoint."
       },
       {
         "title": "Verify SSL",
@@ -36,7 +38,8 @@
         "visible": true,
         "type": "checkbox",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.",
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified or not."
       }
     ]
   },
@@ -45,7 +48,7 @@
       "operation": "hashes_search",
       "title": "Get Analysis Report for Multiple Hashcodes",
       "category": "investigation",
-      "annotation": "hashes_search",
+      "annotation": "get_analysis_report_for_multiple_hashcodes",
       "description": "Retrieves the analysis report summary from the Hybrid Analysis server for multiple MD5/SHA1/SHA256 hash codes you have specified.",
       "parameters": [
         {
@@ -151,7 +154,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' or 'Indicators' module of FortiSOAR™."
+          "description": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' or 'Indicators' module of FortiSOAR™.",
+          "tooltip": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' or 'Indicators' module of FortiSOAR™."
         },
         {
           "title": "Environment ID",
@@ -160,31 +164,9 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis\u2019",
+          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’",
           "placeholder": "300",
           "description": "The ID of the environment in which the file is to be run.\nFor example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’.\nAvailable environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’, 120: 'Windows 7 64 bit’, 110: 'Windows 7 32 bit (HWP Support)', or 100: ‘Windows 7 32 bit’."
-        },
-        {
-          "title": "Do Not Share with Third Party?",
-          "name": "no_share_third_party",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "checkbox",
-          "value": true,
-          "tooltip": "When set to 'true\u2019, the sample is never shared with any third party",
-          "description": "If you select this option, i.e. set it to True; then this sample is not shared with any third party.\nBy default, this is set to, True."
-        },
-        {
-          "title": "Do Not Lookup with Hash?",
-          "name": "no_hash_lookup",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "checkbox",
-          "tooltip": "When set to 'true\u2019, we can not lookup with hash",
-          "value": false,
-          "description": "If you select this option, i.e. set it to True; then this sample is not looked up using its hash value.\nBy default, this is set to, False."
         },
         {
           "title": "Priority",
@@ -205,15 +187,31 @@
           "visible": true,
           "type": "select",
           "options": [
-            "default",
-            "default_maxantievasion",
-            "default_randomfiles",
-            "default_randomtheme",
-            "default_openie"
+            "Default",
+            "Default Maxium Antievasion",
+            "Default Random Files",
+            "Default Random Theme",
+            "Default Openie"
           ],
           "tooltip": "Custom runtime action script. Available runtime scripts are following",
-          "placeholder": "default",
-          "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
+          "placeholder": "Default",
+          "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: Default, Default Maximum Antievasion, Default Random Files, Default Random Theme, or Default Openie."
+        },
+        {
+          "title": "Network Settings",
+          "name": "network_settings",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "select",
+          "options": [
+            "Default",
+            "Tor",
+            "Simulated"
+          ],
+          "tooltip": "Network settings, by the default, fully operating network is set.",
+          "placeholder": "Default",
+          "description": "(Optional) Select a network settings.Available network settings are as follows: Default, Tor, or Simulated."
         },
         {
           "title": "Required Memory Dump?",
@@ -223,7 +221,7 @@
           "visible": true,
           "type": "checkbox",
           "value": true,
-          "tooltip": "When set to 'false\u2019, no memory dumps or memory dump analysis will take place",
+          "tooltip": "When set to 'false’, no memory dumps or memory dump analysis will take place",
           "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
         },
         {
@@ -234,7 +232,7 @@
           "visible": true,
           "type": "checkbox",
           "value": false,
-          "tooltip": "When set to 'true\u2019, will set all experimental anti-evasion options of the kernelmode Monitor",
+          "tooltip": "When set to 'true’, will set all experimental anti-evasion options of the kernelmode Monitor",
           "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
         },
         {
@@ -245,7 +243,7 @@
           "visible": true,
           "type": "checkbox",
           "value": false,
-          "tooltip": "When set to 'true\u2019, will set the in-depth script logging engine of the kernelmode Monitor",
+          "tooltip": "When set to 'true’, will set the in-depth script logging engine of the kernelmode Monitor",
           "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
         },
         {
@@ -256,30 +254,8 @@
           "visible": true,
           "type": "checkbox",
           "value": false,
-          "tooltip": "When set to 'true\u2019, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
+          "tooltip": "When set to 'true’, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
           "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
-        },
-        {
-          "title": "Enabled TOR Analysis?",
-          "name": "tor_enabled_analysis",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "checkbox",
-          "value": true,
-          "tooltip": "When set to 'true\u2019, will route the network traffic for the analysis via TOR (if properly configured on the server)",
-          "description": "If you select this option, i.e set it to, True, the network traffic for the analysis is routed using TOR (if it is properly configured on the server.By default, this is set to, True."
-        },
-        {
-          "title": "Offline Analysis",
-          "name": "offline_analysis",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "checkbox",
-          "value": false,
-          "tooltip": "When set to \u201ctrue\u201d, will disable outbound network traffic for the guest VM (takes precedence over \u2018tor_enabled_analysis\u2019 if both are provided)",
-          "description": "If you select this option, i.e set it to, True, the outbound network traffic for the guest VM is disabled. The value that you set for this field takes precedence over the value that you have set for the 'Enabled TOR Analysis?' field, in case you have specified both the values.By default, this is set to, False."
         },
         {
           "title": "Email Notification",
@@ -291,17 +267,6 @@
           "tooltip": "E-Mail address that may be associated with the submission for notification",
           "placeholder": "hswdbv@gmail.com",
           "description": "(Optional) Email Address that is associated with the file that you have submitted for submission. This email address will be used for notification purposes."
-        },
-        {
-          "title": "Properties File with VxStream Directives",
-          "name": "properties",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "text",
-          "tooltip": "Properties file that can be provided, which may contain VxStream internal directives (e.g. \u2018actionScript\u2019)",
-          "placeholder": "actionScript",
-          "description": "(Optional) Properties that can be associated with the submitted file. Properties might contain VxStream internal directives, such as, actionScript."
         },
         {
           "title": "Comment",
@@ -341,9 +306,9 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "Runtime duration (in seconds)",
+          "tooltip": "Runtime duration (in seconds). Note: Time should be in between 30 to 360 sec.",
           "placeholder": "100",
-          "description": "(Optional) The runtime duration that you can specify in seconds."
+          "description": "(Optional) The runtime duration that you can specify in seconds. Note: Time should be in between 30 to 360 sec."
         },
         {
           "title": "Submit Name",
@@ -400,7 +365,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "Specify the URL that you want to submit to the Hybrid Analysis server."
+          "description": "Specify the URL that you want to submit to the Hybrid Analysis server.",
+          "tooltip": "Specify the URL that you want to submit to the Hybrid Analysis server."
         },
         {
           "title": "Environment ID",
@@ -409,32 +375,10 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis\u2019",
+          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’",
           "placeholder": "300",
           "value": 300,
           "description": "The ID of the environment in which the URL is to be run.\nFor example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’.\nAvailable environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’, 120: 'Windows 7 64 bit’, 110: 'Windows 7 32 bit (HWP Support)', or 100: ‘Windows 7 32 bit’."
-        },
-        {
-          "title": "Do Not Share with Third Party?",
-          "name": "no_share_third_party",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "checkbox",
-          "value": false,
-          "tooltip": "When set to true, the sample is never shared with any third party",
-          "description": "If you select this option, i.e set it to, True, then this sample is not shared with any third-party.By default, this is set to, False."
-        },
-        {
-          "title": "Do Not Lookup with Hash?",
-          "name": "no_hash_lookup",
-          "required": false,
-          "editable": true,
-          "visible": true,
-          "type": "checkbox",
-          "tooltip": "When set to true, we can not lookup with hash",
-          "value": false,
-          "description": "If you select this option, i.e set it to,True then this sample is not looked up using its hashvalue.By default, this is set to, False."
         },
         {
           "title": "Priority",
@@ -443,7 +387,7 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "Priority value between 1 (default) and 10 (highest)",
+          "tooltip": "Priority value between 1 (default) and 100 (highest)",
           "placeholder": "1",
           "value": 1,
           "description": "(Optional) The priority value of the sample URL. By default, all URL samples are set to run with the highest priority i.e., 100. You can set this value to any value between 1 (lowest) and 100(highest)."
@@ -474,7 +418,7 @@
           "visible": true,
           "type": "checkbox",
           "value": true,
-          "tooltip": "When set to 'false\u2019, no memory dumps or memory dump analysis will take place",
+          "tooltip": "When set to 'false’, no memory dumps or memory dump analysis will take place",
           "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
         },
         {
@@ -511,15 +455,20 @@
           "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
         },
         {
-          "title": "Enabled TOR Analysis?",
-          "name": "tor_enabled_analysis",
+          "title": "Network Settings",
+          "name": "network_settings",
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "checkbox",
-          "value": true,
-          "tooltip": "When set to true, will route the network traffic for the analysis via TOR (if properly configured on the server)",
-          "description": "If you select this option, i.e set it to, True, the network traffic for the analysis is routed using TOR (if it is properly configured on the server.By default, this is set to, True."
+          "type": "select",
+          "options": [
+            "Default",
+            "Tor",
+            "Simulated"
+          ],
+          "tooltip": "Network settings, by the default, fully operating network is set.",
+          "placeholder": "Default",
+          "description": "(Optional) Select a network settings.Available network settings are as follows: Default, Tor, or Simulated."
         },
         {
           "title": "Email Notification",
@@ -553,15 +502,46 @@
           "description": "(Optional) The Custom date and time that you can set for the analysis system."
         },
         {
+          "title": "Custom CMD Line Pass to the Analysis File",
+          "name": "custom_cmd_line",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Commandline that should be passed to the analysis file",
+          "description": "(Optional) The custom command line that you want to pass to the analysis file."
+        },
+        {
           "title": "Custom Run Time",
           "name": "custom_run_time",
           "required": false,
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "Runtime duration (in seconds)",
+          "tooltip": "Runtime duration (in seconds). Note: Time should be in between 30 to 360 sec.",
           "placeholder": "100",
-          "description": "(Optional) The runtime duration that you can specify in seconds."
+          "description": "(Optional) The runtime duration that you can specify in seconds. Note: Time should be in between 30 to 360 sec."
+        },
+        {
+          "title": "Submit Name",
+          "name": "submit_name",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Submission Name field that will be used for file type detection and analysis",
+          "placeholder": "My Sample",
+          "description": "(Optional) The name of the submitted file. The Submission Name field is used for file type detection and analysis."
+        },
+        {
+          "title": "Document Password",
+          "name": "document_password",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "password",
+          "tooltip": "Document password that will be used to fill-in Adobe/Office password prompts",
+          "description": "(Optional) The password of the document is used to fill in Adobe or Office password prompts."
         },
         {
           "title": "Environment Variable (Format name=value)",
@@ -602,56 +582,88 @@
           "description": "Specify URL that you want to scan in Hybrid Analysis server for analyzes."
         },
         {
-          "title": "Do Not Share with Third Party?",
-          "name": "no_share_third_party",
+          "title": "Comment",
+          "name": "comment",
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "checkbox",
-          "value": true,
-          "tooltip": "When set to true, the sample is never shared with any third party",
-          "description": "If you select this option, i.e. set it to True; then this sample URL is not shared with any third party.\nBy default, this is set to, False."
+          "type": "text",
+          "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
+          "placeholder": "#tags",
+          "description": "(Optional) A comment that you want to add when submitting the file."
         },
         {
-          "title": "Allow Community Access?",
-          "name": "allow_community_access",
+          "title": "Submit Name",
+          "name": "submit_name",
           "required": false,
           "editable": true,
           "visible": true,
-          "type": "checkbox",
-          "value": true,
-          "tooltip": "If you select this option, i.e set it to,True the sample will be available for the community.By default, this is set to, True. Note: When 'Do Not Share with Third Party?' is set to 'False', it won't be possible to set different value than 'True'",
-          "description": "If you select this option, i.e. set it to True; then this sample URL is available for the community. By default, this is set to, True.\nNote: When the 'Do Not Share with Third Party?' option is set to 'False', then this option must be set as True, i.e., it is not possible to set a value other than 'True'."
-        }
+          "type": "text",
+          "tooltip": "Submission Name field that will be used for file type detection and analysis",
+          "placeholder": "My Sample",
+          "description": "(Optional) The name of the submitted file. The Submission Name field is used for file type detection and analysis."
+        },
       ],
       "enabled": true,
       "output_schema": {
-        "submission_type": "",
         "id": "",
-        "sha256": "",
+        "reports": [],
+        "finished": "",
         "scanners": [
           {
             "name": "",
-            "status": "",
-            "error_message": "",
-            "progress": "",
             "total": "",
-            "positives": "",
+            "status": "",
             "percent": "",
+            "progress": "",
+            "positives": "",
+            "error_message": "",
             "anti_virus_results": []
           }
         ],
         "whitelist": [],
-        "reports": [
-        ],
-        "finished": ""
+        "scanners_v2": {
+          "bfore_ai": {
+            "name": "",
+            "status": "",
+            "percent": "",
+            "progress": "",
+            "error_message": ""
+          },
+          "clean_dns": {
+            "name": "",
+            "status": "",
+            "reports": [],
+            "progress": "",
+            "error_message": "",
+            "reports_count": ""
+          },
+          "urlscan_io": {
+            "name": "",
+            "status": "",
+            "percent": "",
+            "progress": "",
+            "error_message": ""
+          },
+          "virustotal": "",
+          "metadefender": "",
+          "scam_adviser": {
+            "name": "",
+            "status": "",
+            "percent": "",
+            "progress": "",
+            "error_message": ""
+          },
+          "crowdstrike_ml": ""
+        },
+        "submission_type": ""
       }
     },
     {
       "operation": "get_report",
       "title": "Get Analysis Report",
       "category": "investigation",
-      "annotation": "get_reputation",
+      "annotation": "get_analysis_report",
       "description": "Retrieves all the analysis details from the Hybrid Analysis server for a submitted file, based on the input parameters you specify.",
       "parameters": [
         {
@@ -688,77 +700,122 @@
       ],
       "enabled": true,
       "output_schema": {
-        "job_id": "",
-        "environment_id": "",
-        "environment_description": "",
-        "size": "",
-        "type": "",
-        "type_short": [
-        ],
-        "target_url": "",
-        "state": "",
-        "error_type": "",
-        "error_origin": "",
-        "submit_name": "",
         "md5": "",
         "sha1": "",
+        "size": "",
+        "tags": [],
+        "type": "",
+        "hosts": [],
+        "state": "",
+        "job_id": "",
         "sha256": "",
         "sha512": "",
         "ssdeep": "",
-        "imphash": "",
-        "av_detect": "",
-        "vx_family": "",
-        "url_analysis": "",
-        "analysis_start_time": "",
-        "threat_score": "",
-        "interesting": "",
-        "threat_level": "",
-        "verdict": "",
-        "certificates": [],
         "domains": [],
-        "classification_tags": [],
-        "compromised_hosts": [],
-        "hosts": [],
-        "total_network_connections": "",
-        "total_processes": "",
-        "total_signatures": "",
-        "extracted_files": [],
-        "file_metadata": "",
+        "imphash": "",
+        "verdict": "",
+        "av_detect": "",
         "processes": [
           {
-            "uid": "",
-            "parentuid": "",
-            "name": "",
-            "normalized_path": "",
-            "command_line": "",
-            "sha256": "",
-            "av_label": "",
-            "av_matched": "",
-            "av_total": "",
             "pid": "",
+            "uid": "",
             "icon": "",
-            "file_accesses": [],
-            "created_files": [],
-            "registry": [],
-            "mutants": [],
+            "name": "",
+            "sha256": "",
             "handles": [],
+            "modules": [],
+            "mutants": [],
             "streams": [],
+            "av_label": "",
+            "av_total": "",
+            "registry": [],
+            "parentuid": "",
+            "amsi_calls": [],
+            "av_matched": "",
+            "command_line": "",
             "script_calls": [],
-            "process_flags": []
+            "created_files": [],
+            "file_accesses": [],
+            "process_flags": [],
+            "normalized_path": ""
           }
         ],
-        "tags": [],
-        "mitre_attcks": [],
+        "subsystem": "",
+        "vx_family": "",
+        "entrypoint": "",
+        "error_type": "",
+        "image_base": "",
+        "signatures": [
+          {
+            "name": "",
+            "type": "",
+            "origin": "",
+            "attck_id": "",
+            "capec_id": "",
+            "category": "",
+            "relevance": "",
+            "identifier": "",
+            "description": "",
+            "threat_level": "",
+            "attck_id_wiki": "",
+            "threat_level_human": ""
+          }
+        ],
+        "target_url": "",
+        "type_short": [],
+        "interesting": "",
         "submissions": [
           {
-            "submission_id": "",
-            "filename": "",
             "url": "",
-            "created_at": ""
+            "filename": "",
+            "created_at": "",
+            "submission_id": ""
+          }
+        ],
+        "submit_name": "",
+        "certificates": [],
+        "error_origin": "",
+        "mitre_attcks": [
+          {
+            "parent": "",
+            "tactic": "",
+            "attck_id": "",
+            "technique": "",
+            "attck_id_wiki": "",
+            "malicious_identifiers": [],
+            "suspicious_identifiers": [],
+            "informative_identifiers": [],
+            "malicious_identifiers_count": "",
+            "suspicious_identifiers_count": "",
+            "informative_identifiers_count": ""
           }
         ],
         "network_mode": "",
-        "machine_learning_models": []
+        "threat_level": "",
+        "threat_score": "",
+        "url_analysis": "",
+        "file_metadata": "",
+        "crowdstrike_ai": {
+          "analysis_related_urls": [],
+          "executable_process_memory_analysis": []
+        },
+        "environment_id": "",
+        "extracted_files": [],
+        "total_processes": "",
+        "major_os_version": "",
+        "minor_os_version": "",
+        "total_signatures": "",
+        "compromised_hosts": [],
+        "entrypoint_section": "",
+        "analysis_start_time": "",
+        "classification_tags": [],
+        "dll_characteristics": [],
+        "is_certificates_valid": "",
+        "environment_description": "",
+        "machine_learning_models": [],
+        "total_network_connections": "",
+        "image_file_characteristics": [],
+        "certificates_validation_message": ""
       }
     },
     {
@@ -776,7 +833,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. invoice.exe",
-          "description": "Name of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Name of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Name of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "File Type",
@@ -786,7 +844,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. docx",
-          "description": "Type of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Type of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Type of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "File Type Description",
@@ -796,7 +855,18 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. PE32 executable",
-          "description": "Description of the file type based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Description of the file type based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Description of the file type based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Environment ID",
+          "name": "env_id",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "The ID of the environment based on which you want to search for a report on the Hybrid Analysis.",
+          "tooltip": "The ID of the environment based on which you want to search for a report on the Hybrid Analysis."
         },
         {
           "title": "Verdict",
@@ -812,7 +882,8 @@
             "Suspicious",
             "Malicious"
           ],
-          "description": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious."
+          "description": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious.",
+          "tooltip": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious."
         },
         {
           "title": "AV Multiscan range",
@@ -822,7 +893,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. 50-70 [min 0, max 100]",
-          "description": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "AV Family Substring",
@@ -832,7 +904,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. nemucod",
-          "description": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Hash Tag",
@@ -842,7 +915,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. ransomware",
-          "description": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Port",
@@ -852,7 +926,8 @@
           "visible": true,
           "type": "integer",
           "placeholder": "e.g. 8080",
-          "description": "Port of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Port of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Port of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Host",
@@ -862,7 +937,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. 192.168.0.1",
-          "description": "Host of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Host of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Host of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Domain",
@@ -872,7 +948,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. checkip.dyndns.org",
-          "description": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "HTTP Request Substring",
@@ -882,7 +959,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. google",
-          "description": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Similar Samples",
@@ -892,7 +970,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. <sha256>",
-          "description": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value."
+          "description": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value.",
+          "tooltip": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value."
         },
         {
           "title": "Sample Context",
@@ -902,7 +981,28 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. <sha256>",
-          "description": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server."
+          "description": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Start DateTime",
+          "name": "date_from",
+          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp.",
+          "type": "datetime",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created after the specified timestamp."
+        },
+        {
+          "title": "End DateTime",
+          "name": "date_to",
+          "description": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp.",
+          "type": "datetime",
+          "visible": true,
+          "editable": true,
+          "required": false,
+          "tooltip": "Select the DateTime using which you want to filter the result set to only include only those items that have been created before the specified timestamp."
         },
         {
           "title": "IMP Hash",
@@ -911,7 +1011,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "SS Deep",
@@ -920,7 +1021,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "Authenti Hash",
@@ -929,7 +1031,28 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "Authentihash of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Authentihash of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Authentihash of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Uses Tactic",
+          "name": "uses_tactic",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the MITRE ATT&CK® tactic of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Specify the MITRE ATT&CK® tactic of the file based on which you want to search for a report on the Hybrid Analysis server."
+        },
+        {
+          "title": "Uses Technique",
+          "name": "uses_technique",
+          "required": false,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "description": "Specify the MITRE ATT&CK® technique of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Specify the MITRE ATT&CK® technique of the file based on which you want to search for a report on the Hybrid Analysis server."
         }
       ],
       "enabled": true,
@@ -1102,7 +1225,8 @@
           "visible": true,
           "type": "checkbox",
           "value": false,
-          "description": "If you select this option, i.e. set it to True, then the sample screenshots are added to the FortiSOAR™ Attachments module.\nBy default, this is set to, False."
+          "description": "If you select this option, i.e. set it to True, then the sample screenshots are added to the FortiSOAR™ Attachments module.\nBy default, this is set to, False.",
+          "tooltip": "If you select this option, i.e. set it to True, then the sample screenshots are added to the FortiSOAR™ Attachments module.\nBy default, this is set to, False."
         }
       ],
       "enabled": true,
@@ -1166,8 +1290,8 @@
       "operation": "get_feed",
       "title": "Get Latest Analysis Reports",
       "category": "investigation",
-      "annotation": "get_feed",
-      "description": "Retrieves a list of reports from the Hybrid Analysis server, based on the number of days you have specified.",
+      "annotation": "get_latest_analysis_reports",
+      "description": "Retrieves a list of reports from the Hybrid Analysis server.",
       "parameters": [],
       "enabled": true,
       "output_schema": {
@@ -1260,7 +1384,7 @@
     }
   ],
   "icon_medium_name": "",
-  "cs_approved": false,
+  "cs_approved": true,
   "cs_compatible": true,
   "help_online": ""
 }

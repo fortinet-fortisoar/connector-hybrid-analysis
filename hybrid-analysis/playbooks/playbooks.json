@@ -13,7 +13,9 @@
       "createDate": 1649312169,
       "modifyUser": "/api/3/appliances/57545210-2adc-472b-a24f-2df6ee8dfe63",
       "modifyDate": 1649312169,
-      "recordTags": [],
+      "recordTags": [
+        "hybrid-analysis"
+      ],
       "workflows": [
         {
           "@type": "Workflow",
@@ -541,7 +543,7 @@
           "name": "Submit File",
           "aliasName": null,
           "tag": "#HybridAnalysis",
-          "description": "Submit file to Hybrid Analysis from FortiSOAR attachment",
+          "description": "Submits a file from the FortiSOAR Attachments/Indicators module to the Hybrid Analysis server for analysis.",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
