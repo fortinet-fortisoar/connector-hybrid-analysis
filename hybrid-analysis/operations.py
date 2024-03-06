@@ -279,10 +279,10 @@ def conditional_search(config, params):
         av_detect = params.get('av_detect')
         if av_detect:
             params.update({'av_detect': str(av_detect)})
-        vx_family = params.get(vx_family)
+        vx_family = params.get('vx_family')
         if vx_family:
             params.update({'vx_family': str(vx_family)})
-        tag = params.get('tag'):
+        tag = params.get('tag')
         if tag:
             params.update({'tag': str(tag)})
         ssdeep = params.get('ssdeep')
