@@ -193,8 +193,8 @@
             "Default Random Theme",
             "Default Openie"
           ],
+          "value": "Default",
           "tooltip": "Custom runtime action script. Available runtime scripts are following",
-          "placeholder": "Default",
           "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: Default, Default Maximum Antievasion, Default Random Files, Default Random Theme, or Default Openie."
         },
         {
@@ -209,8 +209,8 @@
             "Tor",
             "Simulated"
           ],
+          "value": "Default",
           "tooltip": "Network settings, by the default, fully operating network is set.",
-          "placeholder": "Default",
           "description": "(Optional) Select a network settings.Available network settings are as follows: Default, Tor, or Simulated."
         },
         {
@@ -400,14 +400,14 @@
           "visible": true,
           "type": "select",
           "options": [
-            "default",
-            "default_maxantievasion",
-            "default_randomfiles",
-            "default_randomtheme",
-            "default_openie"
+            "Default",
+            "Default Maxium Antievasion",
+            "Default Random Files",
+            "Default Random Theme",
+            "Default Openie"
           ],
+          "value": "Default",
           "tooltip": "Custom runtime action script. Available runtime scripts are following",
-          "placeholder": "default",
           "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
         },
         {
@@ -466,8 +466,8 @@
             "Tor",
             "Simulated"
           ],
+          "value": "Default",
           "tooltip": "Network settings, by the default, fully operating network is set.",
-          "placeholder": "Default",
           "description": "(Optional) Select a network settings.Available network settings are as follows: Default, Tor, or Simulated."
         },
         {
@@ -607,6 +607,7 @@
       "enabled": true,
       "output_schema": {
         "id": "",
+        "sha256": "",
         "reports": [],
         "finished": "",
         "scanners": [
