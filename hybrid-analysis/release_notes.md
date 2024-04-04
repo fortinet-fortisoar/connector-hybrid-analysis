@@ -1,16 +1,31 @@
-#### What's Improved
+#### Following enhancements have been made to the Hybrid Analysis Connector in version 2.0.1:
 
-- Updated "Attachment ID" parameter with "Attachment/Indicator ID" for "Submit File" operation.
-- "Network Settings" parameter added in "Submit File" operation.
-- "Network Settings", "Custom CMD Line Pass to the Analysis File", "Submit Name", and "Document Password" parameters are added in "Submit URL" operation.
-- "Environment ID", "Start DateTime", "End DateTime", "Uses Tactic", and "Uses Technique" parameters are added in "Advanced Search" operation.
-- "Comment" and "Submit Name" parameters are added in "Quick Scan URL" operation.
-
-
-#### What's Fixed 
-
-- "Submit File" operation should be also work for Indicator module.
-- "Do Not Share with Third Party?", "Do Not Lookup with Hash?", "Enabled TOR Analysis?" and "Offline Analysis" parameters are removed from "Submit File" and "Submit URL" operations.
-- "Properties File with VxStream Directives" parameter removed from "Submit File" operation.
-- Updated output schema for "Get Analysis Report" and "Quick Scan URL" operations.
-- "Do Not Share with Third Party?" and "Allow Community Access?" parameters are removed from "Quick Scan URL" operation.
+- Renamed the Attachment ID parameter to Attachment/Indicator ID for the action Submit File.
+- The action Submit File has a new parameter Network Settings.
+- The action Submit URL has following new parameters:
+	- Network Settings
+	- Custom CMD Line Pass to the Analysis File
+	- Submit Name
+	- Document Password
+- The action Advanced Search has following new parameters:
+	- Environment ID
+	- Start DateTime
+	- End DateTime
+	- Uses Tactic
+	- Uses Technique
+- The action Quick Scan URL has following new parameters:
+	- Comment
+	- Submit Name
+- The action Submit File now works for Indicator module as well.
+- Following parameters have been removed from the actions Submit File and Submit URL:
+	- Do Not Share with Third Party?
+	- Do Not Lookup with Hash?
+	- Enabled TOR Analysis?
+	- Offline Analysis
+- The parameter Properties File with VxStream Directives has been removed from the action Submit File.
+- Output schemas updated for the following actions:
+	- Get Analysis Report
+	- Quick Scan URL
+- Following parameters have been removed from the action Quick Scan URL:
+	- Do Not Share with Third Party?
+	- Allow Community Access?

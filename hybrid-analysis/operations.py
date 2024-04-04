@@ -294,6 +294,15 @@ def conditional_search(config, params):
         date_to = params.get('date_to')
         if date_to:
             params.update({'date_to': _convert_datetime(date_to)})
+        authentihash = params.get('authentihash')
+        if authentihash:
+            params.update({'authentihash': str(authentihash)})
+        uses_tactic = params.get('uses_tactic')
+        if uses_tactic:
+            params.update({'uses_tactic': str(uses_tactic)})
+        uses_technique = params.get('uses_technique')
+        if uses_technique:
+            params.update({'uses_technique': str(uses_technique)})
         verdict_value = ["Whitelisted", "No Verdict", "No Specific Threat", "Suspicious", "Malicious"]
         search_params = [{"field_name": "filename", "field_type": str},
                          {"field_name": "env_id", "field_type": str},

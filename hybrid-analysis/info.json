@@ -154,8 +154,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' or 'Indicators' module of FortiSOAR™.",
-          "tooltip": "The ID of the file that you want to submit to the Hybrid Analysis server. The file ID is used to access the file from the 'Attachments' or 'Indicators' module of FortiSOAR™."
+          "description": "Specify the ID of the file that you want to submit to the Hybrid Analysis server. The ID is used to access the file from FortiSOAR™'s Attachments or Indicators module.",
+          "tooltip": "Specify the ID of the file that you want to submit to the Hybrid Analysis server. The ID is used to access the file from FortiSOAR™'s Attachments or Indicators module."
         },
         {
           "title": "Environment ID",
@@ -166,7 +166,7 @@
           "type": "integer",
           "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’",
           "placeholder": "300",
-          "description": "The ID of the environment in which the file is to be run.\nFor example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’.\nAvailable environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’, 120: 'Windows 7 64 bit’, 110: 'Windows 7 32 bit (HWP Support)', or 100: ‘Windows 7 32 bit’."
+          "description": "The ID of the environment in which the file is to be run. For example, 300 for Linux (Ubuntu 16.04, 64 bit) or 200 for Android Static Analysis. Following are available environment IDs: 400: Mac Catalina 64 bit (x86), 310: Linux (Ubuntu 20.04, 64 bit), 300: Linux (Ubuntu 16.04, 64 bit), 200: Android Static Analysis, 160: Windows 10 64 bit, 140: Windows 11 64 bit, 120: Windows 7 64 bit, 110: Windows 7 32 bit (HWP Support), or 100: Windows 7 32 bit."
         },
         {
           "title": "Priority",
@@ -177,7 +177,7 @@
           "type": "integer",
           "tooltip": "Priority value between 0 (default) and 100 (highest)",
           "placeholder": "80",
-          "description": "The priority value of the sample. By default, the Priority is set to, 0. You can set this value to any value between 0 and 100, which is the highest value."
+          "description": "The priority value of the sample. By default, the priority is set to 0. Minimum permissible value is 0 and maximum is 100."
         },
         {
           "title": "Action Script",
@@ -195,7 +195,7 @@
           ],
           "value": "Default",
           "tooltip": "Custom runtime action script. Available runtime scripts are following",
-          "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: Default, Default Maximum Antievasion, Default Random Files, Default Random Theme, or Default Openie."
+          "description": "(Optional) Select a custom runtime action script. You can select one of the following custom runtime action scripts: Default, Default Maximum Antievasion, Default Random Files, Default Random Theme, or Default Openie."
         },
         {
           "title": "Network Settings",
@@ -211,7 +211,7 @@
           ],
           "value": "Default",
           "tooltip": "Network settings, by the default, fully operating network is set.",
-          "description": "(Optional) Select a network settings.Available network settings are as follows: Default, Tor, or Simulated."
+          "description": "(Optional) Select a network setting. You can select from one of the following options: Default, Tor, or Simulated."
         },
         {
           "title": "Required Memory Dump?",
@@ -222,7 +222,7 @@
           "type": "checkbox",
           "value": true,
           "tooltip": "When set to 'false’, no memory dumps or memory dump analysis will take place",
-          "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
+          "description": "Select this option, i.e set it to false to avoid memory analysis dumps. By default, this is set to true."
         },
         {
           "title": "Experimental Anti-Evasion?",
@@ -233,7 +233,7 @@
           "type": "checkbox",
           "value": false,
           "tooltip": "When set to 'true’, will set all experimental anti-evasion options of the kernelmode Monitor",
-          "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
+          "description": "Select this option, i.e set it to true, to enable all the experimental anti-evasion options of the kernel mode monitor. By default, this is set to false."
         },
         {
           "title": "Set the IN-Depth Script Logging",
@@ -244,7 +244,7 @@
           "type": "checkbox",
           "value": false,
           "tooltip": "When set to 'true’, will set the in-depth script logging engine of the kernelmode Monitor",
-          "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
+          "description": "Select this option, i.e set it to true, to enable the in-depth script logging engine of the kernel mode monitor. By default, this is set to false."
         },
         {
           "title": "Allow Sample Tampering",
@@ -255,7 +255,7 @@
           "type": "checkbox",
           "value": false,
           "tooltip": "When set to 'true’, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
-          "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
+          "description": "Select this option, i.e set it to true, to enable the experimental anti-evasion options of the kernel mode monitor that tampers with the input sample. By default, this is set to false."
         },
         {
           "title": "Email Notification",
@@ -266,7 +266,7 @@
           "type": "text",
           "tooltip": "E-Mail address that may be associated with the submission for notification",
           "placeholder": "hswdbv@gmail.com",
-          "description": "(Optional) Email Address that is associated with the file that you have submitted for submission. This email address will be used for notification purposes."
+          "description": "(Optional) Specify the email Address with the file submitted for submission. This email address is used for notification purposes."
         },
         {
           "title": "Comment",
@@ -277,7 +277,7 @@
           "type": "text",
           "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
           "placeholder": "#tags",
-          "description": "(Optional) A comment that you want to add when submitting the file."
+          "description": "(Optional) Specify a comment to add when submitting the file."
         },
         {
           "title": "Custom Date Time for the Analysis System",
@@ -287,7 +287,7 @@
           "visible": true,
           "type": "datetime",
           "tooltip": "Custom date/time that can be set for the analysis system",
-          "description": "(Optional) The Custom date and time that you can set for the analysis system."
+          "description": "(Optional) Specify a custom date and time to set for the analysis system."
         },
         {
           "title": "Custom CMD Line Pass to the Analysis File",
@@ -297,7 +297,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "Commandline that should be passed to the analysis file",
-          "description": "(Optional) The custom command line that you want to pass to the analysis file."
+          "description": "(Optional) Specify the custom command line to pass to the analysis file."
         },
         {
           "title": "Custom Run Time",
@@ -308,7 +308,7 @@
           "type": "integer",
           "tooltip": "Runtime duration (in seconds). Note: Time should be in between 30 to 360 sec.",
           "placeholder": "100",
-          "description": "(Optional) The runtime duration that you can specify in seconds. Note: Time should be in between 30 to 360 sec."
+          "description": "(Optional) Specify the runtime duration in seconds. NOTE: Time should be between 30 to 360 sec."
         },
         {
           "title": "Submit Name",
@@ -319,7 +319,7 @@
           "type": "text",
           "tooltip": "Submission Name field that will be used for file type detection and analysis",
           "placeholder": "My Sample",
-          "description": "(Optional) The name of the submitted file. The Submission Name field is used for file type detection and analysis."
+          "description": "(Optional) Specify the name of the submitted file. The Submission Name field is used for file type detection and analysis."
         },
         {
           "title": "Document Password",
@@ -329,7 +329,7 @@
           "visible": true,
           "type": "password",
           "tooltip": "Document password that will be used to fill-in Adobe/Office password prompts",
-          "description": "(Optional) The password of the document is used to fill in Adobe or Office password prompts."
+          "description": "(Optional) Specify the password of the document to fill in Adobe or Office password prompts."
         },
         {
           "title": "Environment Variable (Format name=value)",
@@ -340,7 +340,7 @@
           "type": "text",
           "tooltip": "System environment value. The value is provided in the format: name=value",
           "placeholder": "name=value",
-          "description": "(Optional) The system environment value. You must provide this value in the name=value format."
+          "description": "(Optional) Specify the system environment value. You must provide this value in the name=value format."
         }
       ],
       "enabled": true,
@@ -378,7 +378,7 @@
           "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’",
           "placeholder": "300",
           "value": 300,
-          "description": "The ID of the environment in which the URL is to be run.\nFor example, 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’.\nAvailable environment IDs are: 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’, 120: 'Windows 7 64 bit’, 110: 'Windows 7 32 bit (HWP Support)', or 100: ‘Windows 7 32 bit’."
+          "description": "Specify the ID of the environment in which the URL is to be run. For example, 300 for Linux (Ubuntu 16.04, 64 bit) or 200 for Android Static Analysis. Following are available environment IDs: 400: Mac Catalina 64 bit (x86), 310: Linux (Ubuntu 20.04, 64 bit), 300: Linux (Ubuntu 16.04, 64 bit), 200: Android Static Analysis, 160: Windows 10 64 bit, 140: Windows 11 64 bit, 120: Windows 7 64 bit, 110: Windows 7 32 bit (HWP Support), or 100: Windows 7 32 bit."
         },
         {
           "title": "Priority",
@@ -390,7 +390,7 @@
           "tooltip": "Priority value between 1 (default) and 100 (highest)",
           "placeholder": "1",
           "value": 1,
-          "description": "(Optional) The priority value of the sample URL. By default, all URL samples are set to run with the highest priority i.e., 100. You can set this value to any value between 1 (lowest) and 100(highest)."
+          "description": "(Optional) Specify the priority value of the sample URL. By default, all URL samples are set to run with the highest priority i.e., 100. Minimum permissible value is 1 and maximum is 100."
         },
         {
           "title": "Action Script",
@@ -408,7 +408,7 @@
           ],
           "value": "Default",
           "tooltip": "Custom runtime action script. Available runtime scripts are following",
-          "description": "(Optional) Select a custom runtime action script.Available custom runtime action script are as follows: default, default_maxantievasion, default_randomfiles, default_randomtheme, or default_openie."
+          "description": "(Optional) Select a custom runtime action script. You can select one of the following custom runtime action scripts: Default, Default Maximum Antievasion, Default Random Files, Default Random Theme, or Default Openie."
         },
         {
           "title": "Required Memory Dump?",
@@ -419,7 +419,7 @@
           "type": "checkbox",
           "value": true,
           "tooltip": "When set to 'false’, no memory dumps or memory dump analysis will take place",
-          "description": "If you select this option, i.e set it to,True then memory dumps or memory analysis dumps will occur.By default, this is set to, True."
+          "description": "Select this option, i.e set it to false to avoid memory analysis dumps. By default, this is set to true."
         },
         {
           "title": "Experimental Anti-Evasion?",
@@ -430,7 +430,7 @@
           "type": "checkbox",
           "value": false,
           "tooltip": "When set to true, will set all experimental anti-evasion options of the kernelmode Monitor",
-          "description": "If you select this option, i.e set it to, True,enables all the experimental anti-evasion options of the kernelmode Monitor.By default, this is set toFalse"
+          "description": "Select this option, i.e set it to true, to enable all the experimental anti-evasion options of the kernel mode monitor. By default, this is set to false."
         },
         {
           "title": "Set the IN-Depth Script Logging",
@@ -441,7 +441,7 @@
           "type": "checkbox",
           "value": false,
           "tooltip": "When set to true, will set the in-depth script logging engine of the kernelmode Monitor",
-          "description": "If you select this option, i.e set it to,True enables the in-depth script logging engine of the kernelmode Monitor.By default, this is set to, False."
+          "description": "Select this option, i.e set it to true, to enable the in-depth script logging engine of the kernel mode monitor. By default, this is set to false."
         },
         {
           "title": "Allow Sample Tampering",
@@ -452,7 +452,7 @@
           "type": "checkbox",
           "value": false,
           "tooltip": "When set to true, will allow experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample",
-          "description": "If you select this option, i.e set it to,True enables the experimental anti-evasion options of the kernelmode Monitor that tamper with the input sample.By default, this is set to, False."
+          "description": "Select this option, i.e set it to true, to enable the experimental anti-evasion options of the kernel mode monitor that tampers with the input sample. By default, this is set to false."
         },
         {
           "title": "Network Settings",
@@ -468,7 +468,7 @@
           ],
           "value": "Default",
           "tooltip": "Network settings, by the default, fully operating network is set.",
-          "description": "(Optional) Select a network settings.Available network settings are as follows: Default, Tor, or Simulated."
+          "description": "(Optional) Select a network setting. You can select from one of the following options: Default, Tor, or Simulated."
         },
         {
           "title": "Email Notification",
@@ -479,7 +479,7 @@
           "type": "text",
           "tooltip": "E-Mail address that may be associated with the submission for notification",
           "placeholder": "hswdbv@gmail.com",
-          "description": "(Optional) Specify the email addresses that are associated with the URL that you have submitted for analysis. This email address will be used for notification purposes."
+          "description": "(Optional) Specify the email Address with the URL submitted for submission. This email address is used for notification purposes."
         },
         {
           "title": "Comment",
@@ -488,8 +488,9 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "(Optional) A comment that you want to add when submitting the URL.\nNote: You can use #tags while entering comments.",
-          "placeholder": "#tags"
+          "tooltip": "(Optional) A comment that you want to add when submitting the URL. Note: You can use #tags while entering comments.",
+          "placeholder": "#tags",
+          "description": "(Optional) Specify a comment to add when submitting the file."
         },
         {
           "title": "Custom Date Time for the Analysis System",
@@ -499,7 +500,7 @@
           "visible": true,
           "type": "datetime",
           "tooltip": "Custom date/time that can be set for the analysis system",
-          "description": "(Optional) The Custom date and time that you can set for the analysis system."
+          "description": "(Optional) Specify a custom date and time to set for the analysis system."
         },
         {
           "title": "Custom CMD Line Pass to the Analysis File",
@@ -509,7 +510,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "Commandline that should be passed to the analysis file",
-          "description": "(Optional) The custom command line that you want to pass to the analysis file."
+          "description": "(Optional) Specify the custom command line to pass to the analysis file."
         },
         {
           "title": "Custom Run Time",
@@ -520,7 +521,7 @@
           "type": "integer",
           "tooltip": "Runtime duration (in seconds). Note: Time should be in between 30 to 360 sec.",
           "placeholder": "100",
-          "description": "(Optional) The runtime duration that you can specify in seconds. Note: Time should be in between 30 to 360 sec."
+          "description": "(Optional) Specify the runtime duration in seconds. NOTE: Time should be between 30 to 360 sec."
         },
         {
           "title": "Submit Name",
@@ -531,7 +532,7 @@
           "type": "text",
           "tooltip": "Submission Name field that will be used for file type detection and analysis",
           "placeholder": "My Sample",
-          "description": "(Optional) The name of the submitted file. The Submission Name field is used for file type detection and analysis."
+          "description": "(Optional) Specify the name of the submitted file. The Submission Name field is used for file type detection and analysis."
         },
         {
           "title": "Document Password",
@@ -541,7 +542,7 @@
           "visible": true,
           "type": "password",
           "tooltip": "Document password that will be used to fill-in Adobe/Office password prompts",
-          "description": "(Optional) The password of the document is used to fill in Adobe or Office password prompts."
+          "description": "(Optional) Specify the password of the document to fill in Adobe or Office password prompts."
         },
         {
           "title": "Environment Variable (Format name=value)",
@@ -552,7 +553,7 @@
           "type": "text",
           "tooltip": "System environment value. The value is provided in the format: name=value",
           "placeholder": "name=value",
-          "description": "(Optional) The system environment value. You must provide this value in the name=value format."
+          "description": "(Optional) Specify the system environment value. You must provide this value in the name=value format."
         }
       ],
       "enabled": true,
@@ -579,7 +580,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "The URL you want to scan",
-          "description": "Specify URL that you want to scan in Hybrid Analysis server for analyzes."
+          "description": "Specify the URL that you want to scan in Hybrid Analysis server for analyzes."
         },
         {
           "title": "Comment",
@@ -590,7 +591,7 @@
           "type": "text",
           "tooltip": "Comment text that may be associated with the submission/sample (Note: you can use #tags here)",
           "placeholder": "#tags",
-          "description": "(Optional) A comment that you want to add when submitting the file."
+          "description": "(Optional) Specify a comment that you want to add when submitting the file."
         },
         {
           "title": "Submit Name",
@@ -601,7 +602,7 @@
           "type": "text",
           "tooltip": "Submission Name field that will be used for file type detection and analysis",
           "placeholder": "My Sample",
-          "description": "(Optional) The name of the submitted file. The Submission Name field is used for file type detection and analysis."
+          "description": "(Optional) Specify the name of the submitted file. The Submission Name field is used for file type detection and analysis."
         }
       ],
       "enabled": true,
@@ -675,7 +676,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-          "description": "The ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file.\nNote: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
+          "description": "Specify the ID of the file for which to retrieve the report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. NOTE: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
         },
         {
           "title": "File SHA256",
@@ -685,7 +686,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.\nNote: If you specify File SHA256, then you must specify the Environment ID.",
+          "description": "Specify the SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. NOTE: If you specify File SHA256, then you must specify the Environment ID.",
           "placeholder": "only SHA256"
         },
         {
@@ -696,7 +697,7 @@
           "visible": true,
           "type": "integer",
           "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-          "description": "The ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file.\nNote: If you specify Environment ID, then you must specify the File SHA256."
+          "description": "Specify the ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. NOTE: If you specify Environment ID, then you must specify the File SHA256 hash code."
         }
       ],
       "enabled": true,
@@ -835,7 +836,7 @@
           "type": "text",
           "placeholder": "e.g. invoice.exe",
           "description": "Name of the file based on which you want to search for a report on the Hybrid Analysis server.",
-          "tooltip": "Name of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "tooltip": "Specify the name of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "File Type",
@@ -845,8 +846,8 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. docx",
-          "description": "Type of the file based on which you want to search for a report on the Hybrid Analysis server.",
-          "tooltip": "Type of the file based on which you want to search for a report on the Hybrid Analysis server."
+          "description": "Specify the type of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "tooltip": "Specify the type of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
           "title": "File Type Description",
@@ -856,7 +857,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. PE32 executable",
-          "description": "Description of the file type based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the description of the file type based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Description of the file type based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -866,7 +867,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "The ID of the environment based on which you want to search for a report on the Hybrid Analysis.",
+          "description": "Specify the ID of the environment based on which you want to search for a report on the Hybrid Analysis.",
           "tooltip": "The ID of the environment based on which you want to search for a report on the Hybrid Analysis."
         },
         {
@@ -883,7 +884,7 @@
             "Suspicious",
             "Malicious"
           ],
-          "description": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious.",
+          "description": "Select the verdict of the Hybrid Analysis server after scanning the submitted file. You can select one of the following options: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious.",
           "tooltip": "Verdict of the Hybrid Analysis server after scanning the submitted file. Select one of the following as the verdict value: Whitelisted, No Verdict, No Specific Threat, Suspicious, or Malicious."
         },
         {
@@ -894,7 +895,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. 50-70 [min 0, max 100]",
-          "description": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "AV Multiscan range of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -905,7 +906,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. nemucod",
-          "description": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "AV Family Substring of the file type based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -916,7 +917,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. ransomware",
-          "description": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the hash tag of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Hash tag of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -927,7 +928,7 @@
           "visible": true,
           "type": "integer",
           "placeholder": "e.g. 8080",
-          "description": "Port of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the port of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Port of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -938,7 +939,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. 192.168.0.1",
-          "description": "Host of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the host of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Host of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -949,7 +950,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. checkip.dyndns.org",
-          "description": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the domain of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Domain of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -960,7 +961,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. google",
-          "description": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "HTTP Request Substring of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -971,7 +972,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. <sha256>",
-          "description": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value.",
+          "description": "Specify the samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value.",
           "tooltip": "Samples that are similar to the submitted file that you want to search for a report on the Hybrid Analysis server. For example, files having a similar SHA value."
         },
         {
@@ -982,7 +983,7 @@
           "visible": true,
           "type": "text",
           "placeholder": "e.g. <sha256>",
-          "description": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Samples that have a similar context to the submitted file that you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -1012,7 +1013,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "IMP Hash of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -1022,7 +1023,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "SS Deep of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -1032,7 +1033,7 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "description": "Authentihash of the file based on which you want to search for a report on the Hybrid Analysis server.",
+          "description": "Specify the authentication hash of the file based on which you want to search for a report on the Hybrid Analysis server.",
           "tooltip": "Authentihash of the file based on which you want to search for a report on the Hybrid Analysis server."
         },
         {
@@ -1099,7 +1100,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-          "description": "The ID of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the job ID when you submit a sample file.\nNote: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
+          "description": "Specify the ID of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the job ID when you submit a sample file. NOTE: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
         },
         {
           "title": "File SHA256",
@@ -1109,7 +1110,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.\nNote: If you specify File SHA256, then you must specify the Environment ID.",
+          "description": "Specify the SHA256 value of the file for which you want to retrieve details of the dropped file from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. NOTE: If you specify File SHA256, then you must specify the Environment ID.",
           "placeholder": "only SHA256"
         },
         {
@@ -1120,7 +1121,7 @@
           "visible": true,
           "type": "integer",
           "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-          "description": "The ID of the environment on which the submitted file is to be run, whose details of the dropped file you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file.\nNote: If you specify Environment ID, then you must specify the File SHA256."
+          "description": "Specify the ID of the environment on which the submitted file is to be run, whose details of the dropped file you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. NOTE: If you specify Environment ID, then you must specify the File SHA256."
         }
       ],
       "enabled": true,
@@ -1195,7 +1196,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-          "description": "The ID of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the job ID when you submit a sample file.\nNote: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
+          "description": "Specify the ID of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the job ID when you submit a sample file. NOTE: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
         },
         {
           "title": "File SHA256",
@@ -1205,7 +1206,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.\nNote: If you specify File SHA256, then you must specify the Environment ID.",
+          "description": "Specify the SHA256 value of the file for which you want to retrieve screenshots that are captured during analysis from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. NOTE: If you specify File SHA256, then you must specify the Environment ID.",
           "placeholder": "only SHA256"
         },
         {
@@ -1216,7 +1217,7 @@
           "visible": true,
           "type": "integer",
           "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-          "description": "The ID of the environment on which the submitted file is to be run, whose screenshots you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file.\nNote: If you specify Environment ID, then you must specify the File SHA256."
+          "description": "The ID of the environment on which the submitted file is to be run, whose screenshots you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. NOTE: If you specify Environment ID, then you must specify the File SHA256."
         },
         {
           "title": "Attach Screenshots to FortiSOAR",
@@ -1254,7 +1255,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "ID of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the job ID when you submit a sample file. Note: If you provide Job ID then no need to provide File SHA256 and Environment ID",
-          "description": "The ID of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the job ID when you submit a sample file.\nNote: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
+          "description": "Specify the ID of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the job ID when you submit a sample file. NOTE: If you specify the Job ID you do not require to specify File SHA256 or the environment ID."
         },
         {
           "title": "File SHA256",
@@ -1264,7 +1265,7 @@
           "visible": true,
           "type": "text",
           "tooltip": "SHA256 value of the file for which you want to retrieve a report from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. Note: If you provide File SHA256 then you should provide Environment ID and no need to provide Job ID.",
-          "description": "SHA256 value of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file.\nNote: If you specify File SHA256, then you must specify the Environment ID.",
+          "description": "Specify the SHA256 value of the submitted file for which you want to retrieve the state information from the Hybrid Analysis server. You can get the SHA256 value when you submit a sample file. NOTE: If you specify File SHA256, then you must specify the Environment ID.",
           "placeholder": "only SHA256"
         },
         {
@@ -1275,7 +1276,7 @@
           "visible": true,
           "type": "integer",
           "tooltip": "ID of the environment on which the submitted file is to be run, whose report you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. Note: If you provide Environment ID then you should provide File SHA256 and no need to provide Job ID",
-          "description": "The ID of the environment on which the submitted file is to be run, whose state information you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file.\nNote: If you specify Environment ID, then you must specify the File SHA256."
+          "description": "Specify the ID of the environment on which the submitted file is to be run, whose state information you want to retrieve from the Hybrid Analysis server. You can get the Environment ID when you submit a sample file. NOTE: If you specify Environment ID, then you must specify the File SHA256."
         }
       ],
       "enabled": true,
@@ -1387,5 +1388,5 @@
   "icon_medium_name": "",
   "cs_approved": true,
   "cs_compatible": true,
-  "help_online": ""
+  "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.1/hybrid-analysis/818/hybrid-analysis-v2-0-1"
 }
