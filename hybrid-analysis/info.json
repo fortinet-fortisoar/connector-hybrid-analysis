@@ -46,21 +46,21 @@
   "operations": [
     {
       "operation": "hashes_search",
-      "title": "Get Analysis Report for Multiple Hashcodes",
+      "title": "Get Analysis Report for Hashcode",
       "category": "investigation",
       "annotation": "get_analysis_report_for_multiple_hashcodes",
-      "description": "Retrieves the analysis report summary from the Hybrid Analysis server for multiple MD5/SHA1/SHA256 hash codes you have specified.",
+      "description": "Retrieves the analysis report summary from the Hybrid Analysis server for single MD5/SHA1/SHA256 hash code you have specified.",
       "parameters": [
         {
-          "title": "Hash Codes",
-          "name": "hashcodes",
+          "title": "Hash Code",
+          "name": "hashCode",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Either one md5/sha1/sha256 hash or several of them in CSV format",
-          "description": "Specify the hash codes in the MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server. You can specify multiple codes in the CSV format.",
-          "placeholder": "d41d8cd98f00b204e9800998ecf8427e,gwerfdc98f00b204e9810998ecf8427e"
+          "tooltip": "One md5/sha1/sha256 hash",
+          "description": "Specify the hash code in the MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server.",
+          "placeholder": "d41d8cd98f00b204e9800998ecf8427e"
         }
       ],
       "enabled": true,
