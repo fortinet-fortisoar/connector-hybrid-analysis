@@ -357,11 +357,14 @@ def url_quick_scan(config, params):
 
 def hashes_search(config, params):
     try:
-        search_hashes_payload = {'hashes[]': str_to_list(params.get('hashcodes'))}
-        return _api_request("post", SEARCH_HASHES, config, payload=search_hashes_payload)
+        hash_value = params.get('hashCode')
+        hash_value = str(hash_value).strip()
+        search_hashes_params = {'hash': hash_value}
+        response = _api_request("get", SEARCH_HASHES, config, params=search_hashes_params)
+        return response
     except Exception as Err:
         logger.exception("Fail : {}".format(str(Err)))
-        raise ConnectorError(Err)
+        raise ConnectorError(str(Err))
 
 
 def handle_params(params):
