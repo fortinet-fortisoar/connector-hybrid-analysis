@@ -1,9 +1,10 @@
 {
   "name": "hybrid-analysis",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "label": "Hybrid Analysis",
   "description": "Hybrid Analysis provides a malware analysis service that allows users to automate the analysis of files and URLs for potential threats. This connector facilitates automated operations such as retrieving analysis reports, environment details, submitting files, submitting URLs, etc.",
   "publisher": "Fortinet",
+  "contributor": "naili-m, cr0cdev",
   "icon_small_name": "Hybrid_Analysis_small.png",
   "icon_large_name": "Hybrid_Analysis_medium.png",
   "category": "Malware Analysis",
@@ -58,64 +59,27 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "One md5/sha1/sha256 hash",
+          "tooltip": "Specify one of the following hash values: MD5, SHA-1, or SHA-256.",
           "description": "Specify the hash code in the MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server.",
           "placeholder": "d41d8cd98f00b204e9800998ecf8427e"
         }
       ],
       "enabled": true,
-      "output_schema": [
-        {
-          "job_id": "",
-          "environment_id": "",
-          "environment_description": "",
-          "size": "",
-          "type": "",
-          "type_short": [],
-          "target_url": "",
-          "state": "",
-          "error_type": "",
-          "error_origin": "",
-          "submit_name": "",
-          "md5": "",
-          "sha1": "",
-          "sha256": "",
-          "sha512": "",
-          "ssdeep": "",
-          "imphash": "",
-          "av_detect": "",
-          "vx_family": "",
-          "url_analysis": "",
-          "analysis_start_time": "",
-          "threat_score": "",
-          "interesting": "",
-          "threat_level": "",
-          "verdict": "",
-          "certificates": [],
-          "domains": [],
-          "classification_tags": [],
-          "compromised_hosts": [],
-          "hosts": [],
-          "total_network_connections": "",
-          "total_processes": "",
-          "total_signatures": "",
-          "extracted_files": [],
-          "file_metadata": "",
-          "processes": [],
-          "tags": [],
-          "mitre_attcks": [],
-          "submissions": [
-            {
-              "submission_id": "",
-              "filename": "",
-              "url": "",
-              "created_at": ""
-            }
-          ],
-          "network_mode": "",
-          "machine_learning_models": []
-        }
-      ]
+      "output_schema": {
+        "reports": [
+          {
+            "id": "",
+            "state": "",
+            "verdict": "",
+            "error_type": "",
+            "error_origin": "",
+            "environment_id": "",
+            "environment_description": ""
+          }
+        ],
+        "sha256s": [
+        ]
+      }
     },
     {
       "operation": "get_environment",
@@ -1388,5 +1352,5 @@
   "icon_medium_name": "",
   "cs_approved": true,
   "cs_compatible": true,
-  "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.1/hybrid-analysis/818/hybrid-analysis-v2-0-1"
+  "help_online": ""
 }
