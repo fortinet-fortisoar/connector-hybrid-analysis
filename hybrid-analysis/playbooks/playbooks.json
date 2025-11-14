@@ -3,17 +3,17 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Hybrid Analysis - 2.0.2",
+      "name": "Sample - Hybrid Analysis - 2.1.0",
       "description": "Sample playbooks for \"Hybrid Analysis\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": null,
       "uuid": "516c58ed-2197-4ff8-8fc3-de93483164c0",
-      "id": 400,
+      "id": 412,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
-        "Hybrid Analysis",
-        "hybrid-analysis"
+        "hybrid-analysis",
+        "Hybrid Analysis"
       ],
       "workflows": [
         {
@@ -29,7 +29,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248344,
+          "lastModifyDate": 1763101347,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/5477c060-5b5f-4e8e-b938-704b65772969",
@@ -40,9 +40,9 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": [],
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_environment",
                 "operationTitle": "Get Environment",
@@ -111,14 +111,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "0a1be876-f5eb-40d9-97b3-9967962d5f77",
-          "id": 5757,
+          "id": 5914,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -151,7 +151,7 @@
                   "no_share_third_party": true,
                   "allow_community_access": true
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "url_quick_scan",
                 "operationTitle": "Quick Scan URL",
@@ -220,14 +220,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "0e9a5c8a-4415-483e-b665-b74f3e720c32",
-          "id": 5758,
+          "id": 5915,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -243,7 +243,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248300,
+          "lastModifyDate": 1763103306,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/70910262-e61a-4822-b3d6-57e0151d3b2e",
@@ -254,9 +254,9 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": [],
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_api_quota",
                 "operationTitle": "Get API Quota",
@@ -325,14 +325,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "0f18dfcd-118f-48bd-916d-be194a9f8795",
-          "id": 5759,
+          "id": 5916,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -348,7 +348,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248839,
+          "lastModifyDate": 1763103008,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f86695f7-9c92-4d40-9d2e-5e9d2922ca6b",
@@ -359,7 +359,7 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
                   "job_id": "624d77da310155175522f292",
                   "file_hash": "",
@@ -367,7 +367,7 @@
                   "environmentId": "",
                   "optional_params": ""
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_sample_screenshots",
                 "operationTitle": "Get Sample Screenshot",
@@ -436,14 +436,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "14409e81-fb67-4cf5-82d4-aa7cce71203f",
-          "id": 5760,
+          "id": 5917,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -459,7 +459,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248770,
+          "lastModifyDate": 1763103061,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/bd14bb15-7285-486f-b250-a7dd15ab69e3",
@@ -470,14 +470,14 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
                   "job_id": "624d77da310155175522f292",
                   "file_hash": "",
                   "environmentId": "",
                   "optional_params": ""
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_submitted_sample_state",
                 "operationTitle": "Get Submission State",
@@ -546,14 +546,119 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "3d5d7ab4-5138-4ae9-b68b-fc71a870293c",
-          "id": 5761,
+          "id": 5918,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Quick Scan by ID",
+          "aliasName": null,
+          "tag": null,
+          "description": "Submits a ID to the Hybrid Analysis server for a Quick Scan. Note: Some scanners need time to process file, if in response finished is set to false, then you need use this action to get final results",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1763102106,
+          "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/f5d695ed-dd12-4ee9-84da-0366aad87eda",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Quick Scan by ID",
+              "description": null,
+              "arguments": {
+                "name": "Hybrid Analysis",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
+                "params": {
+                  "id": "6915dc159b10afba680b8b7e"
+                },
+                "version": "2.1.0",
+                "connector": "hybrid-analysis",
+                "operation": "quick_scan_by_id",
+                "operationTitle": "Quick Scan by ID",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "545a1b27-adf6-407a-abb2-bf087a573ccf"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "3dd59922-31ee-4ee1-8eb4-dda43aea8958",
+                "title": "Hybrid Analysis: Quick Scan by ID",
+                "resources": [
+                  "alerts"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "triggerOnSource": true,
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "f5d695ed-dd12-4ee9-84da-0366aad87eda"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Quick Scan by ID",
+              "targetStep": "/api/3/workflow_steps/545a1b27-adf6-407a-abb2-bf087a573ccf",
+              "sourceStep": "/api/3/workflow_steps/f5d695ed-dd12-4ee9-84da-0366aad87eda",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "58e0f3b7-721e-4967-bcc0-1eaef7a44ab5"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "58aefcbe-8309-4a38-bf4c-927273ae6e88",
+          "id": 5926,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -569,7 +674,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649312252,
+          "lastModifyDate": 1763101806,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d9705400-9fe3-4966-b882-9b7ef9413020",
@@ -616,7 +721,7 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
                   "email": "",
                   "value": "{{vars.input.records[0]['@id']}}",
@@ -625,8 +730,7 @@
                   "priority": "",
                   "properties": "",
                   "submit_name": "",
-                  "action_script": "",
-                  "environment_id": 300,
+                  "environment_id": 310,
                   "no_hash_lookup": false,
                   "script_logging": false,
                   "custom_cmd_line": "",
@@ -641,7 +745,7 @@
                   "input_sample_tampering": false,
                   "experimental_anti_evasion": false
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "submit_file",
                 "operationTitle": "Submit File",
@@ -673,14 +777,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "6d4bd569-ed90-423e-bdeb-064c856f3650",
-          "id": 5762,
+          "id": 5919,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -696,7 +800,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649247944,
+          "lastModifyDate": 1763102745,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f9e7efbb-5d29-4447-aa7a-24083d247c9f",
@@ -707,27 +811,32 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
                   "tag": "",
                   "url": "",
                   "host": "",
                   "port": "",
                   "domain": "",
+                  "env_id": "",
                   "ssdeep": "",
                   "context": "",
+                  "date_to": "",
                   "verdict": "Suspicious",
                   "filename": "com.google.android.apps.work.oobconfig.apk",
                   "filetype": "",
                   "imp_hash": "",
                   "av_detect": "",
+                  "date_from": "",
                   "vx_family": "",
                   "similar_to": "",
+                  "uses_tactic": "",
                   "authentihash": "",
                   "filetype_desc": "",
+                  "uses_technique": "",
                   "optional_params": ""
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "conditional_search",
                 "operationTitle": "Advance Search",
@@ -796,14 +905,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "6e543623-8912-445b-a8d8-750d358d7bb7",
-          "id": 5763,
+          "id": 5920,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -819,7 +928,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649249360,
+          "lastModifyDate": 1763102997,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/f4039c58-056f-407a-b263-283b39228721",
@@ -830,14 +939,14 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
                   "job_id": "",
                   "file_hash": "8562de3fbe076c03d2e25e7774d82a63c24b3dd0e51d29bcd18a602db1f4b889",
                   "environmentId": 100,
                   "optional_params": ""
                 },
-                "version": "1.0.0",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_sample_dropped_file",
                 "operationTitle": "Get Files Dropped by Sample",
@@ -906,14 +1015,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "96fbd2ac-427a-4535-b9d0-5a831a36ea66",
-          "id": 5764,
+          "id": 5921,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -945,7 +1054,7 @@
                   "hashCode": "0896adf3b2f0cdd9d7b9dead68d558b639414f11f8342073844bba682597cfba",
                   "hashcodes": "c464c43e4697f395376834280b7b16eab7fff2b52fb7fb7cbad934a2dd570f70"
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "hashes_search",
                 "operationTitle": "Get Analysis Report for Multiple Hashcodes",
@@ -1021,14 +1130,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "aa5a7dc8-3164-43c6-823e-066f1dc0cda6",
-          "id": 5765,
+          "id": 5922,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -1044,7 +1153,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248626,
+          "lastModifyDate": 1763103258,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/a55a8b09-50ea-480b-bd94-4c65b13c994d",
@@ -1055,9 +1164,9 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": [],
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_feed",
                 "operationTitle": "Get Multiple Analysis Reports",
@@ -1126,14 +1235,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "abf74fc6-4d76-4687-9331-4a1cc02bfea4",
-          "id": 5766,
+          "id": 5923,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -1149,7 +1258,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248150,
+          "lastModifyDate": 1763102662,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/2f27c56e-ccc6-4178-9c95-afdae1b77a93",
@@ -1160,13 +1269,13 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
                   "job_id": "624d77da310155175522f292",
                   "file_hash": "",
                   "environmentId": ""
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "get_report",
                 "operationTitle": "Get Analysis Report",
@@ -1234,14 +1343,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "bf1cc9fa-7223-433e-94fb-b4bd7ac9dbc7",
-          "id": 5767,
+          "id": 5924,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         },
         {
@@ -1257,7 +1366,7 @@
           "remoteExecutableFlag": false,
           "parameters": [],
           "synchronous": false,
-          "lastModifyDate": 1649248914,
+          "lastModifyDate": 1763101787,
           "collection": "/api/3/workflow_collections/516c58ed-2197-4ff8-8fc3-de93483164c0",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/3576965c-5550-4410-9ad9-72a14b1d1714",
@@ -1304,26 +1413,28 @@
               "description": null,
               "arguments": {
                 "name": "Hybrid Analysis",
-                "config": "",
+                "config": "c1af2fb7-5887-45b5-8184-4e02e5638444",
                 "params": {
-                  "url": "https://etisalatbuyback.com/expectant.php",
+                  "url": "https://www.virustotal.com/",
                   "email": "",
                   "comment": "",
                   "priority": 1,
-                  "action_script": "",
-                  "environment_id": 300,
+                  "submit_name": "",
+                  "environment_id": 310,
                   "no_hash_lookup": false,
                   "script_logging": false,
+                  "custom_cmd_line": "",
                   "custom_run_time": "",
                   "hybrid_analysis": true,
                   "custom_date_time": "",
+                  "document_password": "",
                   "environment_variable": "",
                   "no_share_third_party": false,
                   "tor_enabled_analysis": true,
                   "input_sample_tampering": false,
                   "experimental_anti_evasion": false
                 },
-                "version": "2.0.2",
+                "version": "2.1.0",
                 "connector": "hybrid-analysis",
                 "operation": "submit_url",
                 "operationTitle": "Submit URL",
@@ -1356,14 +1467,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "ea07515d-5d31-4b2f-a460-bc20d2e4e066",
-          "id": 5768,
+          "id": 5925,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "Hybrid Analysis",
-            "hybrid-analysis"
+            "hybrid-analysis",
+            "Hybrid Analysis"
           ]
         }
       ]
