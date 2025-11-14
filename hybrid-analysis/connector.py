@@ -1,7 +1,7 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2024 Fortinet Inc
+Copyright (c) 2025 Fortinet Inc
 Copyright end
 """
 
@@ -12,6 +12,12 @@ HYBRID ANALYSIS
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import check_health as ops_check_health, hybrid_analysis_ops
 from .constants import MACRO_LIST
+
+try:
+    from integrations.crudhub import make_request
+    from django.conf import settings
+except:
+    pass
 
 logger = get_logger('hybrid-analysis')
 

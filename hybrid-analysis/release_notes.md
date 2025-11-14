@@ -1,31 +1,8 @@
-#### Following enhancements have been made to the Hybrid Analysis Connector in version 2.0.1:
+#### Following enhancements have been made to the Hybrid Analysis Connector in version 2.1.0:
 
-- Renamed the Attachment ID parameter to Attachment/Indicator ID for the action Submit File.
-- The action Submit File has a new parameter Network Settings.
-- The action Submit URL has following new parameters:
-	- Network Settings
-	- Custom CMD Line Pass to the Analysis File
-	- Submit Name
-	- Document Password
-- The action Advanced Search has following new parameters:
-	- Environment ID
-	- Start DateTime
-	- End DateTime
-	- Uses Tactic
-	- Uses Technique
-- The action Quick Scan URL has following new parameters:
-	- Comment
-	- Submit Name
-- The action Submit File now works for Indicator module as well.
-- Following parameters have been removed from the actions Submit File and Submit URL:
-	- Do Not Share with Third Party?
-	- Do Not Lookup with Hash?
-	- Enabled TOR Analysis?
-	- Offline Analysis
-- The parameter Properties File with VxStream Directives has been removed from the action Submit File.
-- Output schemas updated for the following actions:
-	- Get Analysis Report
-	- Quick Scan URL
-- Following parameters have been removed from the action Quick Scan URL:
-	- Do Not Share with Third Party?
-	- Allow Community Access?
+- Added the following action and it's playbook:
+    - Quick Scan by ID
+- Renamed the action and playbook label from `Get Analysis Report for Multiple Hashcodes` to
+  `Get Analysis Report for Hashcode`.
+- Renamed the `Hash Codes` parameter to `Hash Code` for the action `Get Analysis Report for Hashcode`.
+- Updated the output schema for the action `Get Analysis Report for Hashcode`.

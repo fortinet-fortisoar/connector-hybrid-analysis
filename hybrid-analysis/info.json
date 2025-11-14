@@ -1,10 +1,15 @@
 {
   "name": "hybrid-analysis",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "label": "Hybrid Analysis",
   "description": "Hybrid Analysis provides a malware analysis service that allows users to automate the analysis of files and URLs for potential threats. This connector facilitates automated operations such as retrieving analysis reports, environment details, submitting files, submitting URLs, etc.",
   "publisher": "Fortinet",
+  "cs_approved": true,
+  "cs_compatible": true,
+  "contributor": "naili-m, cr0cdev",
+  "help_online": "",
   "icon_small_name": "Hybrid_Analysis_small.png",
+  "icon_medium_name": "",
   "icon_large_name": "Hybrid_Analysis_medium.png",
   "category": "Malware Analysis",
   "configuration": {
@@ -16,7 +21,7 @@
         "visible": true,
         "type": "text",
         "name": "server_url",
-        "value": "https://www.hybrid-analysis.com",
+        "value": "https://hybrid-analysis.com",
         "description": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations.",
         "tooltip": "URL of the Hybrid Analysis server to which you will connect and perform the automated operations."
       },
@@ -58,64 +63,27 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "One md5/sha1/sha256 hash",
+          "tooltip": "Specify one of the following hash values: MD5, SHA-1, or SHA-256.",
           "description": "Specify the hash code in the MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server.",
           "placeholder": "d41d8cd98f00b204e9800998ecf8427e"
         }
       ],
       "enabled": true,
-      "output_schema": [
-        {
-          "job_id": "",
-          "environment_id": "",
-          "environment_description": "",
-          "size": "",
-          "type": "",
-          "type_short": [],
-          "target_url": "",
-          "state": "",
-          "error_type": "",
-          "error_origin": "",
-          "submit_name": "",
-          "md5": "",
-          "sha1": "",
-          "sha256": "",
-          "sha512": "",
-          "ssdeep": "",
-          "imphash": "",
-          "av_detect": "",
-          "vx_family": "",
-          "url_analysis": "",
-          "analysis_start_time": "",
-          "threat_score": "",
-          "interesting": "",
-          "threat_level": "",
-          "verdict": "",
-          "certificates": [],
-          "domains": [],
-          "classification_tags": [],
-          "compromised_hosts": [],
-          "hosts": [],
-          "total_network_connections": "",
-          "total_processes": "",
-          "total_signatures": "",
-          "extracted_files": [],
-          "file_metadata": "",
-          "processes": [],
-          "tags": [],
-          "mitre_attcks": [],
-          "submissions": [
-            {
-              "submission_id": "",
-              "filename": "",
-              "url": "",
-              "created_at": ""
-            }
-          ],
-          "network_mode": "",
-          "machine_learning_models": []
-        }
-      ]
+      "output_schema": {
+        "reports": [
+          {
+            "id": "",
+            "state": "",
+            "verdict": "",
+            "error_type": "",
+            "error_origin": "",
+            "environment_id": "",
+            "environment_description": ""
+          }
+        ],
+        "sha256s": [
+        ]
+      }
     },
     {
       "operation": "get_environment",
@@ -164,9 +132,9 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’",
+          "tooltip": "e.g 400: 'Mac Catalina 64 bit (x86)', 310: 'Linux (Ubuntu 20.04, 64 bit)', 200: 'Android Static Analysis', 160: 'Windows 10 64 bit', 140: 'Windows 11 64 bit', 120: 'Windows 7 64 bit', 110: 'Windows 7 32 bit (HWP Support)', 100: 'Windows 7 32 bit'",
           "placeholder": "300",
-          "description": "The ID of the environment in which the file is to be run. For example, 300 for Linux (Ubuntu 16.04, 64 bit) or 200 for Android Static Analysis. Following are available environment IDs: 400: Mac Catalina 64 bit (x86), 310: Linux (Ubuntu 20.04, 64 bit), 300: Linux (Ubuntu 16.04, 64 bit), 200: Android Static Analysis, 160: Windows 10 64 bit, 140: Windows 11 64 bit, 120: Windows 7 64 bit, 110: Windows 7 32 bit (HWP Support), or 100: Windows 7 32 bit."
+          "description": "The ID of the environment in which the file is to be run. For example, 400: 'Mac Catalina 64 bit (x86)', 310: 'Linux (Ubuntu 20.04, 64 bit)', 200: 'Android Static Analysis', 160: 'Windows 10 64 bit', 140: 'Windows 11 64 bit', 120: 'Windows 7 64 bit', 110: 'Windows 7 32 bit (HWP Support)', 100: 'Windows 7 32 bit'"
         },
         {
           "title": "Priority",
@@ -375,10 +343,10 @@
           "editable": true,
           "visible": true,
           "type": "integer",
-          "tooltip": "e.g 300: 'Linux (Ubuntu 16.04, 64 bit)', 200: 'Android Static Analysis’",
-          "placeholder": "300",
-          "value": 300,
-          "description": "Specify the ID of the environment in which the URL is to be run. For example, 300 for Linux (Ubuntu 16.04, 64 bit) or 200 for Android Static Analysis. Following are available environment IDs: 400: Mac Catalina 64 bit (x86), 310: Linux (Ubuntu 20.04, 64 bit), 300: Linux (Ubuntu 16.04, 64 bit), 200: Android Static Analysis, 160: Windows 10 64 bit, 140: Windows 11 64 bit, 120: Windows 7 64 bit, 110: Windows 7 32 bit (HWP Support), or 100: Windows 7 32 bit."
+          "tooltip": "e.g 400: 'Mac Catalina 64 bit (x86)', 310: 'Linux (Ubuntu 20.04, 64 bit)', 200: 'Android Static Analysis', 160: 'Windows 10 64 bit', 140: 'Windows 11 64 bit', 120: 'Windows 7 64 bit', 110: 'Windows 7 32 bit (HWP Support)', 100: 'Windows 7 32 bit'",
+          "placeholder": "310",
+          "value": 310,
+          "description": "Specify the ID of the environment in which the URL is to be run. For example, 310 for Linux (Ubuntu 20.04, 64 bit) or 200 for Android Static Analysis. Following are available environment IDs: 400: 'Mac Catalina 64 bit (x86)', 310: 'Linux (Ubuntu 20.04, 64 bit)', 200: 'Android Static Analysis', 160: 'Windows 10 64 bit', 140: 'Windows 11 64 bit', 120: 'Windows 7 64 bit', 110: 'Windows 7 32 bit (HWP Support)', 100: 'Windows 7 32 bit'."
         },
         {
           "title": "Priority",
@@ -659,6 +627,47 @@
           "crowdstrike_ml": ""
         },
         "submission_type": ""
+      }
+    },
+    {
+      "operation": "quick_scan_by_id",
+      "title": "Quick Scan by ID",
+      "category": "investigation",
+      "annotation": "quick_scan_by_id",
+      "description": "Submits a ID to the Hybrid Analysis server for a Quick Scan. Note: Some scanners need time to process file, if in response finished is set to false, then you need use this action to get final results",
+      "parameters": [
+        {
+          "title": "Scan ID",
+          "name": "id",
+          "required": true,
+          "editable": true,
+          "visible": true,
+          "type": "text",
+          "tooltip": "Specify the ID that you want to scan in Hybrid Analysis server for analyzes.",
+          "description": "Specify the ID that you want to scan in Hybrid Analysis server for analyzes."
+        }
+      ],
+      "enabled": true,
+      "output_schema": {
+        "id": "",
+        "sha256": "",
+        "reports": [],
+        "finished": "",
+        "scanners": [
+          {
+            "name": "",
+            "total": "",
+            "status": "",
+            "percent": "",
+            "progress": "",
+            "positives": "",
+            "status_raw": "",
+            "error_message": "",
+            "anti_virus_results": []
+          }
+        ],
+        "whitelist": [],
+        "scanners_v2": {}
       }
     },
     {
@@ -1384,9 +1393,5 @@
         }
       }
     }
-  ],
-  "icon_medium_name": "",
-  "cs_approved": true,
-  "cs_compatible": true,
-  "help_online": "https://docs.fortinet.com/document/fortisoar/2.0.1/hybrid-analysis/818/hybrid-analysis-v2-0-1"
+  ]
 }

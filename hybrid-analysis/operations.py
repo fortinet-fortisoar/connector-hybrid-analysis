@@ -1,19 +1,23 @@
 """
 Copyright start
 MIT License
-Copyright (c) 2024 Fortinet Inc
+Copyright (c) 2025 Fortinet Inc
 Copyright end
 """
 
 import ast, io, json, requests
 from connectors.core.connector import get_logger, ConnectorError
-from cshmac.requests import HmacAuth
-from django.conf import settings
-from integrations.crudhub import maybe_json_or_raise
-from connectors.cyops_utilities.builtins import download_file_from_cyops
-from integrations.crudhub import make_request
 from os.path import join
 from datetime import datetime
+
+try:
+    from integrations.crudhub import make_request
+    from connectors.cyops_utilities.builtins import download_file_from_cyops
+    from integrations.crudhub import maybe_json_or_raise
+    from cshmac.requests import HmacAuth
+    from django.conf import settings
+except:
+    pass
 
 logger = get_logger('hybrid-analysis')
 
@@ -23,12 +27,13 @@ SUBMIT_FILE = '/api/v2/submit/file'
 GET_ENVIRONMENTS = '/api/v2/system/environments'
 GET_QUOTA = '/api/v2/key/submission-quota'
 KEY_LIMITS = '/api/v2/key/current'
-SEARCH_HASHES = '/api/v2/search/hashes'
-SAMPLE_DROPPED_FILES = '/api/v2/report/{ID}/dropped-files'
+SEARCH_HASHES = '/api/v2/search/hash'
+SAMPLE_DROPPED_FILES = '/api/v2/report/{ID}/dropped-files-v2'
 SAMPLE_SCREENSHOTS = '/api/v2/report/{ID}/screenshots'
 SEARCH = '/api/v2/search/terms'
 SUBMISSION_STATE = '/api/v2/report/{ID}/state'
 URL_QUICK_SCAN = '/api/v2/quick-scan/url'
+QUICK_SCAN_BY_ID = '/api/v2/quick-scan/{ID}'
 SUBMIT_URL = '/api/v2/submit/url'
 
 ACTION_SCRIPT = {
@@ -38,7 +43,6 @@ ACTION_SCRIPT = {
     "Default Random Theme": "default_randomtheme",
     "Default Openie": "default_openie"
 }
-
 
 
 def str_to_list(input_str):
@@ -324,7 +328,7 @@ def conditional_search(config, params):
                          {"field_name": "ssdeep", "field_type": str},
                          {"field_name": "authentihash", "field_type": str},
                          {"field_name": "uses_tactic", "field_type": str},
-                         {"field_name": "uses_technique", "field_type": str},]
+                         {"field_name": "uses_technique", "field_type": str}, ]
         search_params_values = _get_params_in_bulk(params, search_params)
         search_params_values.update(
             {"verdict": int(verdict_value.index(search_params_values.get("verdict"))) + 1}) if search_params_values.get(
@@ -353,6 +357,17 @@ def url_quick_scan(config, params):
     except Exception as Err:
         logger.exception("Fail : {}".format(str(Err)))
         raise ConnectorError(Err)
+
+
+def quick_scan_by_id(config, params):
+    try:
+        ID = params.get('id')
+        QUICK_SCAN_ID = QUICK_SCAN_BY_ID.format(ID=ID)
+        response = _api_request("get", QUICK_SCAN_ID, config)
+        return response
+    except Exception as Err:
+        logger.exception("Fail : {}".format(str(Err)))
+        raise ConnectorError(str(Err))
 
 
 def hashes_search(config, params):
@@ -496,6 +511,7 @@ hybrid_analysis_ops = {
     'get_feed': get_feed,
     'hashes_search': hashes_search,
     'url_quick_scan': url_quick_scan,
+    'quick_scan_by_id': quick_scan_by_id,
     'submit_url': submit_url
 
 }
