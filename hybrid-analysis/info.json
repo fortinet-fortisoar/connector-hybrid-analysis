@@ -7,7 +7,7 @@
   "cs_approved": true,
   "cs_compatible": true,
   "contributor": "naili-m, cr0cdev",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/2.1.0/hybrid-analysis/210/hybrid-analysis-v2-1-0",
   "icon_small_name": "Hybrid_Analysis_small.png",
   "icon_medium_name": "",
   "icon_large_name": "Hybrid_Analysis_medium.png",
@@ -53,18 +53,18 @@
       "operation": "hashes_search",
       "title": "Get Analysis Report for Hashcode",
       "category": "investigation",
-      "annotation": "get_analysis_report_for_multiple_hashcodes",
-      "description": "Retrieves the analysis report summary from the Hybrid Analysis server for single MD5/SHA1/SHA256 hash code you have specified.",
+      "annotation": "get_analysis_report_for_hashcode",
+      "description": "Retrieves the analysis report summary from the Hybrid Analysis server for multiple MD5/SHA1/SHA256 hash codes you have specified.",
       "parameters": [
         {
           "title": "Hash Code",
-          "name": "hashCode",
+          "name": "hashcodes",
           "required": true,
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify one of the following hash values: MD5, SHA-1, or SHA-256.",
-          "description": "Specify the hash code in the MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server.",
+          "tooltip": "Specify the hash code in MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server.",
+          "description": "Specify the hash code in MD5, SHA256, or SHA1 format whose summary you want to retrieve from the Hybrid Analysis server.",
           "placeholder": "d41d8cd98f00b204e9800998ecf8427e"
         }
       ],
@@ -634,7 +634,7 @@
       "title": "Quick Scan by ID",
       "category": "investigation",
       "annotation": "quick_scan_by_id",
-      "description": "Submits a ID to the Hybrid Analysis server for a Quick Scan. Note: Some scanners need time to process file, if in response finished is set to false, then you need use this action to get final results",
+      "description": "Submits an ID to the Hybrid Analysis server for a Quick Scan based on the scan ID that you have specified. NOTE: Some scanners need time to process files. If you get false under finished, use this action again to get final results.",
       "parameters": [
         {
           "title": "Scan ID",
@@ -643,8 +643,8 @@
           "editable": true,
           "visible": true,
           "type": "text",
-          "tooltip": "Specify the ID that you want to scan in Hybrid Analysis server for analyzes.",
-          "description": "Specify the ID that you want to scan in Hybrid Analysis server for analyzes."
+          "tooltip": "Specify the ID that you want to scan in Hybrid Analysis server for analysis.",
+          "description": "Specify the ID that you want to scan in Hybrid Analysis server for analysis."
         }
       ],
       "enabled": true,
