@@ -54,7 +54,7 @@
       "title": "Get Analysis Report for Hashcode",
       "category": "investigation",
       "annotation": "get_analysis_report_for_hashcode",
-      "description": "Retrieves the analysis report summary from the Hybrid Analysis server for multiple MD5/SHA1/SHA256 hash codes you have specified.",
+      "description": "Retrieves the analysis report summary from the Hybrid Analysis server for single MD5/SHA1/SHA256 hash code you have specified.",
       "parameters": [
         {
           "title": "Hash Code",
