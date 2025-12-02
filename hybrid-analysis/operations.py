@@ -372,7 +372,7 @@ def quick_scan_by_id(config, params):
 
 def hashes_search(config, params):
     try:
-        hash_value = params.get('hashCode')
+        hash_value = params.get('hashcodes')
         hash_value = str(hash_value).strip()
         search_hashes_params = {'hash': hash_value}
         response = _api_request("get", SEARCH_HASHES, config, params=search_hashes_params)
